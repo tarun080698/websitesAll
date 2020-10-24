@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import { connect } from 'react-redux';
+import "./App.css";
 
 // wrappers
 import PageWrapper from "../src/Components/PageWrapper";
@@ -9,12 +11,14 @@ import AdminWrapper from "../src/Components/AdminWrapper";
 import Home from "../src/Components/Pages/Home";
 import About from "../src/Components/Pages/About";
 import Contact from "./Components/Pages/Contact";
-import Login from "./Components/Pages/Login";
 import Portfolio from "./Components/CommonComp/Portfolio";
 import Services from "./Components/CommonComp/Services";
 import Team from "./Components/CommonComp/Team";
 
-import "./App.css";
+
+//admin Panel
+import Login from "./Components/Pages/Login";
+import Dashboard from '../src/Components/Pages/Dashboard'
 
 
 class App extends Component {
@@ -24,11 +28,14 @@ class App extends Component {
         <BrowserRouter>
           <Route
             path="/admin"
-            render={(props) => (
+            render={ props => {
+              console.log("props ==>",props);
+              return (
               <AdminWrapper>
-                <Login />
+                {this.props.auth.token ? <Dashboard /> : <Login />}
               </AdminWrapper>
-            )}
+              )
+            }}
           />
           <Route
             path="/"
@@ -86,4 +93,16 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {}
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

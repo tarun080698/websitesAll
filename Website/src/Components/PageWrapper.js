@@ -13,7 +13,7 @@ export class PageWrapper extends Component {
             <Link className="navbar-brand js-scroll-trigger" to="/">
               Speed-up
             </Link>
-            <button
+            {/* <button
               className="navbar-toggler navbar-toggler-right"
               type="button"
               data-toggle="collapse"
@@ -24,7 +24,7 @@ export class PageWrapper extends Component {
             >
               Menu
               <i className="fas fa-bars ml-1"></i>
-            </button>
+            </button> */}
             <div className="collapse navbar-collapse" id="navbarResponsive">
               <ul className="navbar-nav text-uppercase ml-auto">
                 <li className="nav-item">

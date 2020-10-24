@@ -1,37 +1,48 @@
-import React, { Component } from 'react';
-import Field from '../CommonComp/Fields';
-import { withFormik } from 'formik';
-import * as Yup from 'yup';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Field from "../CommonComp/Fields";
+import { withFormik } from "formik";
+import * as Yup from "yup";
+import * as authActions from "../store/actions/authActions";
 
 const fields = [
   {
-    name: 'email',
-    elementName: 'input',
-    type: 'email',
-    placeholder: 'Your email',
+    name: "email",
+    elementName: "input",
+    type: "email",
+    placeholder: "Your email",
   },
   {
-    name: 'password',
-    elementName: 'input',
-    type: 'password',
-    placeholder: 'Your password',
+    name: "password",
+    elementName: "input",
+    type: "password",
+    placeholder: "Your password",
   },
 ];
 
 class Login extends Component {
   render() {
     return (
-      <div className='login-page'>
-        <div className='container'>
-          <div className='login-form'>
-            <div className='row'>
+      <div className="login-page">
+        <div className="container">
+          <div className="login-form">
+            <div className="row">
               <h1>Login to admin Panel</h1>
             </div>
-            <div className='row'>
-              <form className='form-page' onSubmit={this.props.handleSubmit}>
+            <div className="row">
+              <form
+                className="form-page"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  this.props.login(
+                    this.props.values.email,
+                    this.props.values.password
+                  );
+                }}
+              >
                 {fields.map((field, index) => {
                   return (
-                    <div className='col-md-12' key={index}>
+                    <div className="col-md-12" key={index}>
                       <Field
                         key={index}
                         {...field}
@@ -45,8 +56,10 @@ class Login extends Component {
                     </div>
                   );
                 })}
-                <div className='col-md-12'>
-                  <button className='btn -btn-primary green' type='submit'>Login</button>
+                <div className="col-md-12">
+                  <button className="btn -btn-primary green" type="submit">
+                    Login
+                  </button>
                 </div>
               </form>
             </div>
@@ -57,18 +70,39 @@ class Login extends Component {
   }
 }
 
-export default withFormik({
-  mapPropsToValues: () => ({
-    email: '',
-    password: '',
-  }),
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
 
-  validationSchema: Yup.object().shape({
-    email: Yup.string().required('Login with correct email.'),
-    password: Yup.string().required('Please enter correct password.'),
-  }),
+const mapdispatchToProps = (dispatch) => {
+  return {
+    login: (email, password) => {
+      console.log("logging in user", email, password);
+      dispatch(authActions.login(email, password));
+    },
+  };
+};
 
-  handleSubmit: (values, { setSubmitting }) => {
-    console.log('login attempt', values);
-  },
-})(Login);
+export default connect(
+  mapStateToProps,
+  mapdispatchToProps
+)(
+  withFormik({
+    mapPropsToValues: () => ({
+      email: "",
+      password: "",
+    }),
+
+    validationSchema: Yup.object().shape({
+      email: Yup.string().required("Login with correct email."),
+      password: Yup.string().required("Please enter correct password."),
+    }),
+
+    handleSubmit: (values, { setSubmitting }, login) => {
+      console.log("login attempt", values);
+      login(values.email, values.password);
+    },
+  })(Login)
+);
