@@ -1,4 +1,4 @@
-import API from "../../../utils/api";
+import API from '../../../utils/api';
 
 export const login = (email, password) => {
   return (dispatch) => {
@@ -7,11 +7,6 @@ export const login = (email, password) => {
       dispatch({ type: "LOGIN", payload: { email: email, token: res.data.id, userId: res.data.userId } });
     });
   };
-
-  // return {
-  //   type: "LOGIN",
-  //   payload: { email, password },
-  // };
 };
 
 export const register = (email, password) => {

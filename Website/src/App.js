@@ -29,9 +29,9 @@ class App extends Component {
           <Route
             path="/admin"
             render={ props => {
-              console.log("props ==>",props);
               return (
-              <AdminWrapper>
+                <AdminWrapper>
+              {console.log("props ==>",this.props)}
                 {this.props.auth.token ? <Dashboard /> : <Login />}
               </AdminWrapper>
               )
