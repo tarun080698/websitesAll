@@ -6,7 +6,8 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <h1>You are logged in with token : {this.props.auth.token}</h1>
+        <h1 style={{'margin-top':'100px'}}>You are logged in with token :</h1>
+        <p>{this.props.auth.token}</p>
       </div>
     );
   }

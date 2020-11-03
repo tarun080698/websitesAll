@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import "./App.css";
 
 // wrappers
 import PageWrapper from "../src/Components/PageWrapper";
 import AdminWrapper from "../src/Components/AdminWrapper";
+import LoginWrapper from "../src/Components/LoginWrapper";
 
 // pages
 import Home from "../src/Components/Pages/Home";
@@ -15,11 +16,9 @@ import Portfolio from "./Components/CommonComp/Portfolio";
 import Services from "./Components/CommonComp/Services";
 import Team from "./Components/CommonComp/Team";
 
-
 //admin Panel
 import Login from "./Components/Pages/Login";
-import Dashboard from '../src/Components/Pages/Dashboard'
-
+import Dashboard from "../src/Components/Pages/Dashboard";
 
 class App extends Component {
   render() {
@@ -28,13 +27,20 @@ class App extends Component {
         <BrowserRouter>
           <Route
             path="/admin"
-            render={ props => {
+            render={(props) => {
               return (
-                <AdminWrapper>
-              {console.log("props ==>",this.props)}
-                {this.props.auth.token ? <Dashboard /> : <Login />}
-              </AdminWrapper>
-              )
+                <div>
+                  {this.props.auth.token ? (
+                    <AdminWrapper>
+                      <Dashboard />
+                    </AdminWrapper>
+                  ) : (
+                    <LoginWrapper>
+                      <Login />
+                    </LoginWrapper>
+                  )}
+                </div>
+              );
             }}
           />
           <Route
@@ -58,7 +64,7 @@ class App extends Component {
             path="/about"
             render={(props) => (
               <PageWrapper>
-                <About {...props}/>
+                <About {...props} />
               </PageWrapper>
             )}
           />
@@ -66,7 +72,7 @@ class App extends Component {
             path="/contact"
             render={(props) => (
               <PageWrapper>
-                <Contact {...props}/>
+                <Contact {...props} />
               </PageWrapper>
             )}
           />
@@ -74,7 +80,7 @@ class App extends Component {
             path="/portfolio"
             render={(props) => (
               <PageWrapper>
-                <Portfolio {...props}/>
+                <Portfolio {...props} />
               </PageWrapper>
             )}
           />
@@ -93,16 +99,14 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    auth: state.auth
-  }
-}
+    auth: state.auth,
+  };
+};
 
-const mapDispatchToProps = dispatch => {
-  return {}
-}
-
-
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
