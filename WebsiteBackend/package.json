@@ -22,7 +22,7 @@
     "serve-favicon": "^2.0.1",
     "sharp": "^0.26.2",
     "strong-error-handler": "^3.0.0",
-    "swagger-ui": "^3.35.2"
+    "swagger-ui": "^3.36.1"
   },
   "devDependencies": {
     "eslint": "^3.17.1",
