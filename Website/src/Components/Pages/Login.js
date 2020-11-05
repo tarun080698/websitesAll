@@ -34,10 +34,10 @@ class Login extends Component {
                 className="form-page"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  this.props.login(
-                    this.props.values.email,
-                    this.props.values.password
-                  );
+                  if (this.props.values.email.trim() !== "" && this.props.values.password.trim() !== "") {
+                    this.props.login(
+                      this.props.values.email,
+                      this.props.values.password);}
                 }}
               >
                 {fields.map((field, index) => {
@@ -79,7 +79,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (email, password) => {
-      console.log("logging in user", email, password);
       dispatch(authActions.login(email, password));
     },
   };
