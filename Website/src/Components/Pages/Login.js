@@ -76,7 +76,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapdispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     login: (email, password) => {
       console.log("logging in user", email, password);
@@ -87,7 +87,7 @@ const mapdispatchToProps = (dispatch) => {
 
 export default connect(
   mapStateToProps,
-  mapdispatchToProps
+  mapDispatchToProps
 )(
   withFormik({
     mapPropsToValues: () => ({
