@@ -57,7 +57,7 @@ class Login extends Component {
                   );
                 })}
                 <div className="col-md-12">
-                  <button className="btn -btn-primary" type="submit">
+                  <button className="btn -btn-primary green" type="submit">
                     Login
                   </button>
                 </div>

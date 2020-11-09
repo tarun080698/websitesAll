@@ -1,10 +1,37 @@
-.logo {
-  width: 120px;
-  height: 31px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px 24px 16px 0;
-  float: left;
+.login-page {
+  padding-top: 100px;
+  min-height: 100vh;
+  background-color: lightgray;
 }
-.site-layout .site-layout-background {
-  background: #fff;
+
+.login-form{
+  max-width: 600px;
+  width: max-content;
+  margin: auto;
+  padding: 30px;
+  background-color: aliceblue;
+  box-shadow: 0px 0px 12px rgba(204, 206, 211, 0.6);
+  border-radius: 12.5px;
+}
+
+.login-form h1 form-page {
+  text-shadow: 0 0 black;
+  font-size: 28px;
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.form-page {
+    text-shadow: 0 0 black;
+    font-size: 28px;
+    display: block;
+    margin-bottom: 20px;
+    min-width: 400px;
+    width: max-content;
+    max-width: 500px;
+  }
+
+.text-danger{
+    font-size: 14px;
 }
