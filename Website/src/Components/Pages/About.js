@@ -2,7 +2,7 @@ import React, { Component } from "react";
 export class About extends Component {
   render() {
     return (
-      <div>
+      <div style={{'backgroundColor':'#969693'}}>
         {/* <Header
           title="Welcome To Our Studio!"
           subtitle="IT'S NICE TO MEET YOU"

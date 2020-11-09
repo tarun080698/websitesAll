@@ -4,11 +4,10 @@ import { connect } from "react-redux";
 import "./App.css";
 
 // wrappers
-import PageWrapper from "../src/Components/PageWrapper";
-import AdminWrapper from "../src/Components/AdminWrapper";
-import LoginWrapper from "../src/Components/LoginWrapper";
+import AdminWrapper from "../src/Components/Wrapper/AdminWrapper";
+import LoginWrapper from "../src/Components/Wrapper/LoginWrapper";
 
-// pages
+//  pages
 import Home from "../src/Components/Pages/Home";
 import About from "../src/Components/Pages/About";
 import Contact from "./Components/Pages/Contact";
@@ -16,7 +15,7 @@ import Portfolio from "./Components/CommonComp/Portfolio";
 import Services from "./Components/CommonComp/Services";
 import Team from "./Components/CommonComp/Team";
 
-//admin Panel
+// admin Panel
 import Login from "./Components/Pages/Login";
 import Dashboard from "../src/Components/Pages/Dashboard";
 
@@ -47,50 +46,50 @@ class App extends Component {
             path="/"
             exact={true}
             render={(props) => (
-              <PageWrapper>
-                <Home {...props} />
-              </PageWrapper>
+               
+                <Home />
+               
             )}
           />
           <Route
             path="/services"
             render={(props) => (
-              <PageWrapper>
+               
                 <Services {...props} />
-              </PageWrapper>
+               
             )}
           />
           <Route
             path="/about"
             render={(props) => (
-              <PageWrapper>
-                <About {...props} />
-              </PageWrapper>
+               
+              <About {...props} />
+               
             )}
           />
           <Route
             path="/contact"
             render={(props) => (
-              <PageWrapper>
+              
                 <Contact {...props} />
-              </PageWrapper>
+              
             )}
           />
           <Route
             path="/portfolio"
             render={(props) => (
-              <PageWrapper>
+              
                 <Portfolio {...props} />
-              </PageWrapper>
+              
             )}
           />
 
           <Route
             path="/team"
             render={(props) => (
-              <PageWrapper>
+              
                 <Team {...props} />
-              </PageWrapper>
+              
             )}
           />
         </BrowserRouter>

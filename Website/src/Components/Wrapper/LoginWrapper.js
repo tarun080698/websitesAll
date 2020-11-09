@@ -1,17 +1,12 @@
 import React, { Component } from 'react'
-import '../assets/css/admin.css'
-// import AppBar from "@material-ui/core/AppBar";
-// import Toolbar from "@material-ui/core/Toolbar";
+import '../../assets/css/login.css'
+import "antd/dist/antd.css";
 
 export default class LoginWrapper extends Component {
     render() {
         return (
             <div id='login-page'>
-                {/* <AppBar>
-                    <Toolbar />
-                </AppBar> */}
                 {this.props.children}
-
             </div>
         )
     }

@@ -1,0 +1,57 @@
+.login-page {
+    padding-top: 100px;
+    min-height: 100vh;
+    background-color: darkgreen;
+  }
+  
+  .login-form {
+    width: max-content;
+    margin: auto;
+    padding: 30px;
+    background-color: lightgreen;
+    box-shadow: 0px 0px 12px rgba(204, 206, 211, 0.6);
+    border-radius: 12.5px;
+  }
+  
+  .login-form h1 form-page {
+    text-shadow: 0 0 black;
+    font-size: 28px;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .form-page {
+    text-shadow: 0 0 black;
+    font-size: 28px;
+    display: block;
+    margin-bottom: 20px;
+    min-width: 400px;
+    width: max-content;
+    max-width: 500px;
+  }
+  
+  .text-danger {
+    font-size: 14px;
+  }
+
+  button.btn{
+    color: darkgreen;
+    text-align: center;
+    letter-spacing: 7.5px;
+    background-color: whitesmoke;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color 0.2s ease-out;
+    cursor: pointer;
+  }
+
+  button.btn:hover{
+    color: whitesmoke;
+    text-align: center;
+    letter-spacing: 7.5px;
+    background-color: darkgreen;
+    border: 1px solid whitesmoke;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color 0.2s ease-out;
+    cursor: pointer;
+  }

@@ -1,24 +1,23 @@
 import React, { Component } from "react";
-import Header from "../CommonComp/Header";
+import Footer from "../CommonComp/Footer";
 import Services from "../CommonComp/Services"
 import Portfolio from "../CommonComp/Portfolio"
 import Team from "../CommonComp/Team"
+import About from './About'
 import Contact from "../Pages/Contact"
+import Hero from "../Pages/Hero"
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        <Header
-          title="Welcome To Our Studio!"
-          subtitle="IT'S NICE TO MEET YOU"
-          btntxt="TELL ME MORE"
-          link="/services"
-          showbtn={true} />
+      <div className="main">
+        <Hero />
         <Services />
         <Portfolio />
+        <About />
         <Team />
         <Contact />
+        <Footer /> 
       </div>
     );
   }
