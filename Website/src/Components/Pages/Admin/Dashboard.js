@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 class Dashboard extends Component {
   render() {
     return (
-      <div>
-        <h1 style={{'margin-top':'100px'}}>You are logged in with token :</h1>
+      <div style={{'padding-left':'100px'}}>
+        <h1>You are logged in with token :</h1>
         <p>{this.props.auth.token}</p>
       </div>
     );

@@ -16,16 +16,58 @@ import Portfolio from "./Components/CommonComp/Portfolio";
 import Services from "./Components/CommonComp/Services";
 import Team from "./Components/CommonComp/Team";
 
+
 //admin Panel
 import Login from "./Components/Pages/Login";
-import Dashboard from "../src/Components/Pages/Dashboard";
+import Dashboard from "./Components/Pages/Admin/Dashboard";
+import Posts from "./Components/Pages/Admin/Posts";
+import Users from "./Components/Pages/Admin/Users";
 
 class App extends Component {
   render() {
     return (
       <div>
         <BrowserRouter>
+          
           <Route
+            path="/admin/users"
+            render={(props) => {
+              return (
+                <div>
+                  {this.props.auth.token ? (
+                    <AdminWrapper>
+                      <Users />
+                    </AdminWrapper>
+                  ) : (
+                    <LoginWrapper>
+                      <Login />
+                    </LoginWrapper>
+                  )}
+                </div>
+              );
+            }}/>
+            
+
+            <Route
+            path="/admin/posts"
+            render={(props) => {
+              return (
+                <div>
+                  {this.props.auth.token ? (
+                    <AdminWrapper>
+                      <Posts />
+                    </AdminWrapper>
+                  ) : (
+                    <LoginWrapper>
+                      <Login />
+                    </LoginWrapper>
+                  )}
+                </div>
+              );
+            }}/>
+            
+          <Route
+            exact={true}
             path="/admin"
             render={(props) => {
               return (
