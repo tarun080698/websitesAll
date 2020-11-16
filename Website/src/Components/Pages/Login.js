@@ -76,13 +76,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = (dispatch) => ({
     login: (email, password) => {
       dispatch(authActions.login(email, password));
     },
-  };
-};
+  });
+
 
 export default connect(
   mapStateToProps,

@@ -16,11 +16,11 @@ import Portfolio from "./Components/CommonComp/Portfolio";
 import Services from "./Components/CommonComp/Services";
 import Team from "./Components/CommonComp/Team";
 
-
 //admin Panel
 import Login from "./Components/Pages/Login";
 import Dashboard from "./Components/Pages/Admin/Dashboard";
 import Posts from "./Components/Pages/Admin/Posts";
+import AddPost from "./Components/Pages/Admin/AddPost";
 import Users from "./Components/Pages/Admin/Users";
 
 class App extends Component {
@@ -28,7 +28,6 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-          
           <Route
             path="/admin/users"
             render={(props) => {
@@ -45,10 +44,30 @@ class App extends Component {
                   )}
                 </div>
               );
-            }}/>
-            
+            }}
+          />
 
-            <Route
+          <Route
+          exact={true}
+            path="/admin/posts/add"
+            render={(props) => {
+              return (
+                <div>
+                  {this.props.auth.token ? (
+                    <AdminWrapper>
+                      <AddPost />
+                    </AdminWrapper>
+                  ) : (
+                    <LoginWrapper>
+                      <Login />
+                    </LoginWrapper>
+                  )}
+                </div>
+              );
+            }}
+          />
+          <Route
+            exact={true}
             path="/admin/posts"
             render={(props) => {
               return (
@@ -64,8 +83,9 @@ class App extends Component {
                   )}
                 </div>
               );
-            }}/>
-            
+            }}
+          />
+
           <Route
             exact={true}
             path="/admin"
@@ -96,6 +116,7 @@ class App extends Component {
           />
           <Route
             path="/services"
+            exact={true}
             render={(props) => (
               <PageWrapper>
                 <Services {...props} />
@@ -104,6 +125,7 @@ class App extends Component {
           />
           <Route
             path="/about"
+            exact={true}
             render={(props) => (
               <PageWrapper>
                 <About {...props} />
@@ -112,6 +134,7 @@ class App extends Component {
           />
           <Route
             path="/contact"
+            exact={true}
             render={(props) => (
               <PageWrapper>
                 <Contact {...props} />
@@ -120,6 +143,7 @@ class App extends Component {
           />
           <Route
             path="/portfolio"
+            exact={true}
             render={(props) => (
               <PageWrapper>
                 <Portfolio {...props} />
@@ -129,6 +153,7 @@ class App extends Component {
 
           <Route
             path="/team"
+            exact={true}
             render={(props) => (
               <PageWrapper>
                 <Team {...props} />
