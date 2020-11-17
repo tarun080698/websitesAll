@@ -1,20 +1,29 @@
 import React, { Component } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
+const styles = (theme) => ({
+  headpaper: {
+    margin: "20px 40px",
+    width: "auto",
+    padding: "0px 20px",
+    fontSize: "large",
+  }
+});
+
 class TableView extends Component {
   render() {
+    const {classes } = this.props;
     const { rows } = this.props;
 
     const { columns } = this.props;
     return (
-      <Paper elevation={3}>
+      <Paper elevation={3} className={classes.headpaper}>
         <Table>
           <TableHead>
             <TableRow>
@@ -28,13 +37,17 @@ class TableView extends Component {
           <TableBody>
             {rows
               ? rows.map((row) => {
-                  return columns.map((column, i) => {
+                return <TableRow>
+                  {
+                    columns.map((column, i) => {
                     return (
                       <TableCell key={i} component="th" scope="row">
                         {row[column.name]}
                       </TableCell>
                     );
-                  });
+                    })
+                  }
+                </TableRow>
                 })
               : null}
           </TableBody>
@@ -43,4 +56,4 @@ class TableView extends Component {
     );
   }
 }
-export default TableView;
+export default (withStyles(styles)(TableView));

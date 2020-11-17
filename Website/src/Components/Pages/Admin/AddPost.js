@@ -8,6 +8,7 @@ import { withFormik, Field, Form } from "formik";
 import * as Yup from "yup";
 import Button from "@material-ui/core/Button";
 import saveIcon from "@material-ui/icons/Save";
+import { withRouter } from "react-router-dom";
 
 const styles = (theme) => ({
   container: {
@@ -32,7 +33,21 @@ const styles = (theme) => ({
     padding: theme.spacing.unit * 3,
   },
 });
+
 class AddPost extends Component {
+  componentDidUpdate(props, state) {
+    if (
+      this.props.match.params.view === "add" &&
+      this.props.admin.posts.filter(
+        (post) => post.title === this.props.values.title
+      ).length > 0
+    ) {
+      const post = this.props.admin.posts.filter(
+        (post) => post.title === this.props.values.title
+      )[0];
+      this.props.history.push("/admin/posts/edit" + post.dispatch);
+    }
+  }
   render() {
     const { classes } = this.props;
     return (
@@ -47,7 +62,7 @@ class AddPost extends Component {
               onChange={(e) =>
                 this.props.setFieldValue(
                   "slug",
-                  e.target.value.toLowerCase().replace(/ /g, "_")
+                  e.target.value.toLowerCase().replace(/ /g, "-")
                 )
               }
               fullWidth
@@ -77,7 +92,13 @@ class AddPost extends Component {
                 { label: "Published", value: true },
               ]}
             />
-            <Button variant="contained" color="primary" onClick={this.props.handleSubmit}><saveIcon/> Save</Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.props.handleSubmit}
+            >
+              <saveIcon /> Save
+            </Button>
           </Paper>
         </Form>
       </div>
@@ -85,35 +106,50 @@ class AddPost extends Component {
   }
 }
 
+// document.write(today);
+
 const mapStateToProps = (state) => ({
   auth: state.auth,
   admin: state.admin,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addPost: (post, token) => { dispatch(AdminActions.addPost(post, token))}
+  addPost: (post, token) => {
+    dispatch(AdminActions.addPost(post, token));
+  },
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(
-  withFormik({
-    mapPropsToValues: () => ({
-      title: "",
-      slug: "",
-      createdAt: "",
-      status: false,
-    }),
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(
+    withFormik({
+      mapPropsToValues: () => ({
+        title: "",
+        slug: "",
+        createdAt: null,
+        status: false,
+        content: "",
+      }),
 
-    validationSchema: Yup.object().shape({
-      title: Yup.string().required("Required"),
-      slug: Yup.string().required("Required"),
-      content: Yup.string().required("Required"),
-    }),
+      validationSchema: Yup.object().shape({
+        title: Yup.string().required("Required"),
+        slug: Yup.string().required("Required"),
+        content: Yup.string().required("Required"),
+      }),
 
-    handleSubmit: (values, { setSubmitting, props}) => {
-      console.log("Posting", props.addPost);
-    },
-  })(withStyles(styles)(AddPost))
+      handleSubmit: (values, { setSubmitting, props }) => {
+        let today = new Date();
+        var dd = String(today.getDate()).padStart(2, "0");
+        var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+        var yyyy = today.getFullYear();
+        today = mm + "/" + dd + "/" + yyyy;
+        values.createdAt = today;
+
+        console.log("Posting", props.addPost);
+        props.addPost(values, props.auth.token);
+      },
+    })(withStyles(styles)(AddPost))
+  )
 );

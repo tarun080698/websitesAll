@@ -12,7 +12,10 @@ import Link from "@material-ui/core/Link";
 
 const columns = [
   { label: "Title", name: "title" },
-  { label: "ID", name: "id" },
+  // { label: "ID", name: "id" },
+  { label: "Created at", name: "createdAt" },
+  { label: "Slug", name: "slug" },
+  { label: "Content", name: "content" },
 ];
 
 const styles = (theme) => ({
