@@ -6,6 +6,8 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { Link as RouterLink } from "react-router-dom";
+import Link from "@material-ui/core/Link";
 
 const styles = (theme) => ({
   headpaper: {
@@ -13,12 +15,28 @@ const styles = (theme) => ({
     width: "auto",
     padding: "0px 20px",
     fontSize: "large",
-  }
+  },
+  row: {},
+
+  cell: {
+    fontSize: "large",
+    color: "#0e101a",
+    width: "auto",
+    height: "auto",
+    display: "table-cell",
+  },
+
+  head: {
+    fontSize: "x-large",
+    color: "#0e101a",
+    fontWeight: "bolder",
+    lineHeight: "0.5rem",
+  },
 });
 
 class TableView extends Component {
   render() {
-    const {classes } = this.props;
+    const { classes } = this.props;
     const { rows } = this.props;
 
     const { columns } = this.props;
@@ -29,7 +47,11 @@ class TableView extends Component {
             <TableRow>
               {columns
                 ? columns.map((column, i) => {
-                    return <TableCell key={i}>{column.label}</TableCell>;
+                    return (
+                      <TableCell className={classes.head} key={i}>
+                        {column.label}
+                      </TableCell>
+                    );
                   })
                 : null}
             </TableRow>
@@ -37,17 +59,31 @@ class TableView extends Component {
           <TableBody>
             {rows
               ? rows.map((row) => {
-                return <TableRow>
-                  {
-                    columns.map((column, i) => {
-                    return (
-                      <TableCell key={i} component="th" scope="row">
-                        {row[column.name]}
-                      </TableCell>
-                    );
-                    })
-                  }
-                </TableRow>
+                  return (
+                    <TableRow className={classes.trow}>
+                      {columns.map((column, i) => {
+                        return (
+                          <TableCell
+                            className={classes.cell}
+                            key={i}
+                            component="th"
+                            scope="row"
+                          >
+                            {column.name === "id" ? (
+                              <Link
+                                to={`/admin/posts/edit/${row[column.name]}`}
+                                component={RouterLink}
+                              >
+                                {row[column.name]}
+                              </Link>
+                            ) : (
+                              row[column.name]
+                            )}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  );
                 })
               : null}
           </TableBody>
@@ -56,4 +92,4 @@ class TableView extends Component {
     );
   }
 }
-export default (withStyles(styles)(TableView));
+export default withStyles(styles)(TableView);

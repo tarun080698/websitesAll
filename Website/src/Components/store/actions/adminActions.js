@@ -23,3 +23,19 @@ export const addPost = (post, token) => {
     });
   };
 };
+
+export const getSinglePost = (id, token) => {
+  return (dispatch) => {
+    API.getSinglePost(id, token, (res) => {
+      dispatch({ type: "GOT_SINGLE_POST", payload: res.data });
+    });
+  };
+};
+
+export const updatePost = (post, token) => {
+  return (dispatch) => {
+    API.updatePost(post, token, (res) => {
+      dispatch({ type: "UPDATE_POST", payload: res.data });
+    });
+  };
+};

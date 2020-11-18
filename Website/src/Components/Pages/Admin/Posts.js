@@ -7,15 +7,15 @@ import { connect } from "react-redux";
 import * as AdminActions from "../../store/actions/adminActions";
 import Fab from "@material-ui/core/Fab";
 import EditIcon from "@material-ui/icons/Edit";
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
 
 const columns = [
+  { label: "ID", name: "id" },
   { label: "Title", name: "title" },
-  // { label: "ID", name: "id" },
   { label: "Created at", name: "createdAt" },
   { label: "Slug", name: "slug" },
-  { label: "Content", name: "content" },
+  // { label: "Content", name: "content" },
 ];
 
 const styles = (theme) => ({
@@ -29,7 +29,7 @@ const styles = (theme) => ({
     width: "max-content",
     padding: "0px 20px",
     fontSize: "xx-large",
-  }
+  },
 });
 
 class Posts extends Component {
@@ -45,7 +45,13 @@ class Posts extends Component {
           POSTS LIST
         </Paper>
         <TableView columns={columns} rows={posts} />
-        <Fab component={RouterLink} to="/admin/posts/add" color="primary" aria-label="Add" className={classes.fab}>
+        <Fab
+          component={RouterLink}
+          to="/admin/posts/add"
+          color="primary"
+          aria-label="Add"
+          className={classes.fab}
+        >
           <EditIcon />
         </Fab>
       </div>

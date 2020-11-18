@@ -40,7 +40,7 @@ app.models.User.afterRemote('create', (ctx, user, next) => {
     {
       firstname: user.username,
       lastname: user.email,
-      created_at: new Date(),
+      created_at: null,
       userId: user.id,
       dob: new Date(),
     },
