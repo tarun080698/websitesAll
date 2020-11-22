@@ -4,6 +4,7 @@ import Field from "../CommonComp/Fields";
 import { withFormik } from "formik";
 import * as Yup from "yup";
 import * as authActions from "../store/actions/authActions";
+// import { FormikTextField, FormikSelectField } from "formik-material-fields";
 
 const fields = [
   {
@@ -34,10 +35,15 @@ class Login extends Component {
                 className="form-page"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  if (this.props.values.email.trim() !== "" && this.props.values.password.trim() !== "") {
+                  if (
+                    this.props.values.email.trim() !== "" &&
+                    this.props.values.password.trim() !== ""
+                  ) {
                     this.props.login(
                       this.props.values.email,
-                      this.props.values.password);}
+                      this.props.values.password
+                    );
+                  }
                 }}
               >
                 {fields.map((field, index) => {
@@ -77,11 +83,10 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    login: (email, password) => {
-      dispatch(authActions.login(email, password));
-    },
-  });
-
+  login: (email, password) => {
+    dispatch(authActions.login(email, password));
+  },
+});
 
 export default connect(
   mapStateToProps,

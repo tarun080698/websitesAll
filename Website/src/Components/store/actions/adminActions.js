@@ -1,5 +1,7 @@
 import API from "../../../utils/api";
 
+
+
 export const getUsers = (token) => {
   return (dispatch) => {
     API.getUsers(token, (res) => {
@@ -20,6 +22,14 @@ export const addPost = (post, token) => {
   return (dispatch) => {
     API.addPost(post, token, (res) => {
       dispatch({ type: "POST_ADDED", payload: res.data });
+    });
+  };
+};
+
+export const uploadImage = (data, token, postId, userId) => {
+  return (dispatch) => {
+    API.uploadImage(data, token, postId, userId, (res) => {
+      dispatch({ type: "UPLOAD_IMAGE", payload: res.data });
     });
   };
 };

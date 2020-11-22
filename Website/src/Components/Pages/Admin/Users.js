@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import TableView from "../../CommonComp/TableView";
-import Paper from "@material-ui/core/Paper";
+// import Paper from "@material-ui/core/Paper";
 import "../../../assets/css/users.css";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import * as AdminActions from "../../store/actions/adminActions";
+import GroupIcon from "@material-ui/icons/Group";
 
 const columns = [
   { label: "Name", name: "name" },
@@ -22,8 +23,9 @@ const styles = (theme) => ({
     margin: "20px 40px",
     width: "max-content",
     padding: "0px 20px",
-    fontSize: "xx-large",
-  }
+    fontSize: "x-large",
+    color: "aliceblue",
+  },
 });
 
 class Users extends Component {
@@ -35,9 +37,14 @@ class Users extends Component {
     const users = this.props.admin.users;
     return (
       <div>
-        <Paper className={classes.headpaper} elevation={5}>
-          USERS LIST
-        </Paper>
+        {/* <Paper className={classes.headpaper} elevation={5}> */}
+        <center>
+          <p className={classes.headpaper}>
+            <GroupIcon fontSize="large" />
+            USERS
+          </p>
+        </center>
+        {/* </Paper> */}
         <TableView columns={columns} rows={users} />
       </div>
     );

@@ -1,7 +1,7 @@
 .login-page {
   padding-top: 100px;
   min-height: 100vh;
-  background-color: lightgray;
+  background-color: black !important;
 }
 
 .login-form{
@@ -9,8 +9,19 @@
   width: max-content;
   margin: auto;
   padding: 30px;
-  background-color: aliceblue;
-  box-shadow: 0px 0px 12px rgba(204, 206, 211, 0.6);
+  color: darkslategrey;
+  background-color: #161d20;
+  border-radius: 12.5px;
+}
+
+.login-form:hover{
+  max-width: 600px;
+  width: max-content;
+  margin: auto;
+  padding: 30px;
+  color: darkslategrey;
+  background-color: #161d20;
+  box-shadow: 0px 0px 12px rgba(252, 252, 252, 0.6);
   border-radius: 12.5px;
 }
 

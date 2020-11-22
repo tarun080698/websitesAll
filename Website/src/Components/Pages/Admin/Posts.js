@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import TableView from "../../CommonComp/TableView";
-import Paper from "@material-ui/core/Paper";
+// import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
 import "../../../assets/css/users.css";
 import { connect } from "react-redux";
 import * as AdminActions from "../../store/actions/adminActions";
 import Fab from "@material-ui/core/Fab";
 import EditIcon from "@material-ui/icons/Edit";
+import PostIcon from "@material-ui/icons/Web";
 import { Link as RouterLink } from "react-router-dom";
-import Link from "@material-ui/core/Link";
+// import Link from "@material-ui/core/Link";
 
 const columns = [
   { label: "ID", name: "id" },
-  { label: "Title", name: "title" },
   { label: "Created at", name: "createdAt" },
+  { label: "Title", name: "title" },
   { label: "Slug", name: "slug" },
-  // { label: "Content", name: "content" },
 ];
 
 const styles = (theme) => ({
@@ -28,7 +28,8 @@ const styles = (theme) => ({
     margin: "20px 40px",
     width: "max-content",
     padding: "0px 20px",
-    fontSize: "xx-large",
+    fontSize: "x-large",
+    color: "aliceblue",
   },
 });
 
@@ -41,9 +42,16 @@ class Posts extends Component {
     const posts = this.props.admin.posts;
     return (
       <div>
-        <Paper className={classes.headpaper} elevation={5}>
+        {/* <Paper className={classes.headpaper} elevation={5}>
           POSTS LIST
-        </Paper>
+        </Paper> */}
+
+        <center>
+          <p className={classes.headpaper}>
+            <PostIcon fontSize="large"/>
+            POSTS
+          </p>
+        </center>
         <TableView columns={columns} rows={posts} />
         <Fab
           component={RouterLink}

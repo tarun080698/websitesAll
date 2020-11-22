@@ -17,21 +17,21 @@ function ListItemLink(props) {
 export default class Sidebar extends Component {
   render() {
     return (
-      <List>
-        <ListItemLink to="/admin">
-          <ListItemIcon>
+      <List style={{color: "aliceblue" }}>
+        <ListItemLink to="/admin" >
+          <ListItemIcon style={{ color: "aliceblue"}}>
             <DashboardIcon />
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItemLink>
         <ListItemLink to="/admin/posts">
-          <ListItemIcon>
+          <ListItemIcon style={{ color: "aliceblue"}}>
             <InsertDriveFile />
           </ListItemIcon>
-          <ListItemText primary="Posts" />
+          <ListItemText primary="Posts" /> 
         </ListItemLink>
         <ListItemLink to="/admin/users">
-          <ListItemIcon>
+          <ListItemIcon style={{ color: "aliceblue"}}>
             <FaceIcon />
           </ListItemIcon>
           <ListItemText primary="Users" />

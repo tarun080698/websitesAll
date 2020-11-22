@@ -34,7 +34,12 @@ export class PageWrapper extends Component {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link js-scroll-trigger" to="/portfolio">
-                    Locations
+                  Portfolio
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link js-scroll-trigger" to="/blog">
+                    Blogs
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -54,9 +59,10 @@ export class PageWrapper extends Component {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link js-scroll-trigger" to="/admin">
-                    AdminPage
+                    Login
                   </Link>
                 </li>
+
               </ul>
             </div>
           </div>

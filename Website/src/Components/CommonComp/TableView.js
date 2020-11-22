@@ -15,22 +15,31 @@ const styles = (theme) => ({
     width: "auto",
     padding: "0px 20px",
     fontSize: "large",
+    backgroundColor: "black",
+    // color: "aliceblue"
   },
   row: {},
 
   cell: {
     fontSize: "large",
-    color: "#0e101a",
     width: "auto",
     height: "auto",
     display: "table-cell",
+    color: "aliceblue"
   },
-
+  caption: {
+    color: "red",
+    padding: "10px",
+    fontSize: "1.5rem",
+    textAlign: "right",
+    captionSide: "top",
+  },
   head: {
     fontSize: "x-large",
-    color: "#0e101a",
     fontWeight: "bolder",
     lineHeight: "0.5rem",
+    backgroundColor: "black",
+    color: "aliceblue"
   },
 });
 
@@ -43,6 +52,7 @@ class TableView extends Component {
     return (
       <Paper elevation={3} className={classes.headpaper}>
         <Table>
+        <caption className={classes.caption}>A basic table example with a caption</caption>
           <TableHead>
             <TableRow>
               {columns
@@ -58,9 +68,9 @@ class TableView extends Component {
           </TableHead>
           <TableBody>
             {rows
-              ? rows.map((row) => {
+              ? rows.map((row, i) => {
                   return (
-                    <TableRow className={classes.trow}>
+                    <TableRow key={i} className={classes.trow}>
                       {columns.map((column, i) => {
                         return (
                           <TableCell
@@ -74,7 +84,7 @@ class TableView extends Component {
                                 to={`/admin/posts/edit/${row[column.name]}`}
                                 component={RouterLink}
                               >
-                                {row[column.name]}
+                                <u>{row[column.name]}</u>
                               </Link>
                             ) : (
                               row[column.name]

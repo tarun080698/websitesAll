@@ -12,6 +12,8 @@ import LoginWrapper from "../src/Components/LoginWrapper";
 import Home from "../src/Components/Pages/Home";
 import About from "../src/Components/Pages/About";
 import Contact from "./Components/Pages/Contact";
+import SingleBlog from "./Components/Pages/SingleBlog";
+import Blog from "./Components/Pages/Blog";
 import Portfolio from "./Components/CommonComp/Portfolio";
 import Services from "./Components/CommonComp/Services";
 import Team from "./Components/CommonComp/Team";
@@ -48,7 +50,7 @@ class App extends Component {
             }}
           />
           <Route
-          exact={true}
+            exact={true}
             path="/admin/posts/:view/:id"
             render={(props) => {
               return (
@@ -67,7 +69,7 @@ class App extends Component {
             }}
           />
           <Route
-          exact={true}
+            exact={true}
             path="/admin/posts/:view"
             render={(props) => {
               return (
@@ -166,6 +168,24 @@ class App extends Component {
             render={(props) => (
               <PageWrapper>
                 <Portfolio {...props} />
+              </PageWrapper>
+            )}
+          />
+          <Route
+            path="/blog"
+            exact={true}
+            render={(props) => (
+              <PageWrapper>
+                <Blog {...props} />
+              </PageWrapper>
+            )}
+          />
+          <Route
+            path="/blog:slug"
+            exact={true}
+            render={(props) => (
+              <PageWrapper>
+                <SingleBlog {...props} />
               </PageWrapper>
             )}
           />
