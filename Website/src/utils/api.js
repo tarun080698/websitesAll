@@ -82,6 +82,11 @@ const API = {
         success(res);
       });
   },
+  getSitePosts: (skip, success) => {
+    axios.get(`${host}/api/Posts`, { params: { filter: { skip: skip, limit: 10 } } }).then((res) => {
+      success(res);
+    });
+  },
 };
 
 export default API;

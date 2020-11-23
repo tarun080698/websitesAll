@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import sampleImg from '../../assets/img/team1.png'
 class PortfolioItem extends Component {
     render() {
         return (
@@ -14,8 +14,8 @@ class PortfolioItem extends Component {
                       <div className="portfolio-hover-content">
                         <i className="fas fa-plus fa-3x"></i>
                       </div>
-                    </div>
-                    <img
+                </div>
+                <img
                       className="img-fluid"
                       src={this.props.image}
                       alt=""
