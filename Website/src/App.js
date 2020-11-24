@@ -126,6 +126,22 @@ class App extends Component {
               );
             }}
           />
+
+
+          {/* <Route
+            exact={true}
+            path="/login"
+            render={(props) => {
+              return (
+                <div>
+                  {!this.props.auth.token &&
+                    <LoginWrapper>
+                      <Login />
+                    </LoginWrapper>}
+                  </div>
+              );
+            }}
+          /> */}
           <Route
             path="/"
             exact={true}

@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"
+import { connect } from "react-redux";
+import { withRouter, Link as RouterLink } from "react-router-dom";
+
 
 export class PageWrapper extends Component {
   render() {
@@ -57,11 +60,18 @@ export class PageWrapper extends Component {
                     Contact
                   </Link>
                 </li>
+                {this.props.auth.token ? 
                 <li className="nav-item">
-                  <Link className="nav-link js-scroll-trigger" to="/admin">
-                    Login
+                  <Link className="nav-link js-scroll-trigger" to="/">
+                      Logout
                   </Link>
                 </li>
+                  :
+                <li className="nav-item">
+                  <Link className="nav-link js-scroll-trigger" to="/admin">
+                      Login
+                  </Link>
+                  </li>}
 
               </ul>
             </div>
@@ -73,4 +83,8 @@ export class PageWrapper extends Component {
   }
 }
 
-export default PageWrapper;
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps)(withRouter(PageWrapper));
