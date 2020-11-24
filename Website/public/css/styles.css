@@ -10070,7 +10070,7 @@ img::-moz-selection {
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: #0c0c0c66;
+  background-color: #272727;
   font-size: x-large;
 }
 #mainNav .navbar-toggler {
@@ -10107,7 +10107,7 @@ img::-moz-selection {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     border: none;
-    background-color: #0c0c0c66;
+    background-color: #272727;
     font-size: x-large;
     transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
   }

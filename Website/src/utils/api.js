@@ -83,7 +83,30 @@ const API = {
       });
   },
   getSitePosts: (skip, success) => {
-    axios.get(`${host}/api/Posts`, { params: { filter: { skip: skip, limit: 10 } } }).then((res) => {
+    axios
+      .get(`${host}/api/Posts`, {
+        params: { filter: { skip: skip, limit: 10, include: "PostImage" } },
+      })
+      .then((res) => {
+        success(res);
+      });
+  },
+  getPostBySlug: (slug, token, success) => {
+    axios
+      .get(`${host}/api/Posts/findOne?access_token=${token}`, {
+        params: {
+          filter: {
+            where: { slug: slug },
+            include: { Comments: "Profile" },
+          },
+        },
+      })
+      .then((res) => {
+        success(res);
+      });
+  },
+  getPostsCount: (success) => {
+    axios.get(`${host}/api/Posts/count`).then((res) => {
       success(res);
     });
   },

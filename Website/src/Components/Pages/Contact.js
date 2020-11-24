@@ -44,7 +44,7 @@ class contact extends Component {
   render() {
     return (
       <div>
-        <section className="page-section" id="contact">
+        <section className="page-section" id="contact" style={{'margin-top': '98px'}}>
           <div className="container">
             <div className="text-center">
               <h2 className="section-heading text-uppercase">Contact Us</h2>

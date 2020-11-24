@@ -32,7 +32,6 @@ const styles = (theme) => ({
     flex: 4,
     height: "100%",
     width: "auto",
-    maxWidth: "1040px",
     margin: theme.spacing(1),
     padding: theme.spacing(3),
     color: "black",
@@ -44,6 +43,7 @@ const styles = (theme) => ({
   rightSide: {
     flex: 1,
     height: "100%",
+    width: "20%",
     margin: theme.spacing(1),
     padding: theme.spacing(3),
     color: "black",

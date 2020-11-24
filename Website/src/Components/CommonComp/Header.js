@@ -5,7 +5,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <header className="masthead" style={{backgroundImage: `url(${this.props.image})`}}>
+        <header className="masthead" style={{backgroundImage: `url(${this.props.image})`, 'margin-top': '98px'}}>
           <div className="container">
             <div className="masthead-subheading">{this.props.title}</div>
             <div className="masthead-heading text-uppercase">

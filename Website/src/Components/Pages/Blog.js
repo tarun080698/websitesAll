@@ -9,8 +9,8 @@ import BlogItem from "../CommonComp/BlogItem";
 class Blog extends Component {
   componentDidMount() {
     this.props.getSitePosts(0);
-
-    // this.props.getPostCount();
+    this.props.getPostsCount();
+    console.log(this.props.site.postCount);
   }
   render() {
     return (
@@ -21,14 +21,12 @@ class Blog extends Component {
           showbtn={false}
           image={image}
         />
-        <section className="page-section bg-light" id="portfolio">
+        <section
+          className="page-section "
+          id="portfolio"
+          style={{ backgroundColor: "#272727" }}
+        >
           <div className="container">
-            <div className="text-center">
-              <h2 className="section-heading text-uppercase">Blogs</h2>
-              <h3 className="section-subheading text-muted">
-                We hope you will enjoy it.
-              </h3>
-            </div>
             <div className="row">
               {this.props.site.posts ? (
                 this.props.site.posts.length > 0 &&
@@ -38,6 +36,30 @@ class Blog extends Component {
               ) : (
                 <h3>No blogs found. Come back later in sometime.</h3>
               )}
+            </div>
+            <div className="row">
+              <div className="col-md-12">
+                <div className="text-center">
+                  {this.props.site.postCount > 0 ? (
+                    <button
+                      className="btn btn-default"
+                      style={{    'font-size': '1.2rem',
+                        color: '#fed136',
+                        'font-family': '"Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+                        'font-weight': '700',
+                        'letter-spacing': '0.2625em',
+                        // 'text-transform': 'uppercase'
+                      }}
+                      
+                      onClick={(e) => {
+                        this.props.getSitePosts(this.props.site.posts.length);
+                      }}
+                    >
+                      load more...
+                    </button>
+                  ) : null}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -53,9 +75,9 @@ const mapDispatchToProps = (dispatch) => ({
   getSitePosts: (skip) => {
     dispatch(SiteActions.getSitePosts(skip));
   },
-  // getPostCount: () => {
-  //   dispatch(SiteActions.getPostCount());
-  // },
+  getPostsCount: () => {
+    dispatch(SiteActions.getPostsCount());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Blog));
