@@ -4,7 +4,7 @@ export const login = (email, password) => {
   return (dispatch) => {
     API.login(email, password, (res) => {
       console.log("result", res.data);
-      dispatch({ type: "LOGIN", payload: { email: email, token: res.data.id, userId: res.data.userId } });
+      dispatch({ type: "LOGIN", payload: { user: res.data, token: res.data.id, userId: res.data.userId } });
     });
   };
 };

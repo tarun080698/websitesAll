@@ -8,7 +8,7 @@
   max-width: 600px;
   width: max-content;
   margin: auto;
-  padding: 30px;
+  padding: 60px;
   color: darkslategrey;
   background-color: #161d20;
   border-radius: 12.5px;
@@ -18,11 +18,18 @@
   max-width: 600px;
   width: max-content;
   margin: auto;
-  padding: 30px;
+  padding: 60px;
   color: darkslategrey;
   background-color: #161d20;
   box-shadow: 0px 0px 12px rgba(252, 252, 252, 0.6);
   border-radius: 12.5px;
+}
+
+.btn-login{
+  color: whitesmoke;
+  background-color: darkslategray;
+  font-size: large;
+  border: none;
 }
 
 .login-form h1 form-page {

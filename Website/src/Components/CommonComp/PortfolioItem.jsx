@@ -18,7 +18,7 @@ class PortfolioItem extends Component {
                     <img
                       className="img-fluid"
                       src={this.props.image}
-                      alt=""
+                      alt="image here"
                     />
                   </a>
                   <div className="portfolio-caption">

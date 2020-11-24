@@ -22,6 +22,9 @@ const fields = [
 ];
 
 class Login extends Component {
+  state = {
+    show: 'none'
+  }
   render() {
     return (
       <div className="login-page">
@@ -39,6 +42,7 @@ class Login extends Component {
                     this.props.values.email.trim() !== "" &&
                     this.props.values.password.trim() !== ""
                   ) {
+                    this.setState({show: 'inline-block'})
                     this.props.login(
                       this.props.values.email,
                       this.props.values.password
@@ -63,9 +67,12 @@ class Login extends Component {
                   );
                 })}
                 <div className="col-md-12">
-                  <button className="btn -btn-primary green" type="submit">
+                  {
+                    this.props.values.email.trim() !== "" &&
+                    this.props.values.password.trim() !== ""
+                    && <button className="btn-login" type="submit">
                     Login
-                  </button>
+                  </button>}
                 </div>
               </form>
             </div>
