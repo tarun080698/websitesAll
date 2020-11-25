@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { withRouter, Link as RouterLink } from "react-router-dom";
-
 
 export class PageWrapper extends Component {
   render() {
@@ -37,7 +36,7 @@ export class PageWrapper extends Component {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link js-scroll-trigger" to="/portfolio">
-                  Portfolio
+                    Portfolio
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -60,19 +59,19 @@ export class PageWrapper extends Component {
                     Contact
                   </Link>
                 </li>
-                {this.props.auth.token ? 
-                <li className="nav-item">
-                  <Link className="nav-link js-scroll-trigger" to="/">
+                {this.props.auth.token ? (
+                  <li className="nav-item">
+                    <Link className="nav-link js-scroll-trigger" to="/">
                       Logout
-                  </Link>
-                </li>
-                  :
-                <li className="nav-item">
-                  <Link className="nav-link js-scroll-trigger" to="/admin">
+                    </Link>
+                  </li>
+                ) : (
+                  <li className="nav-item">
+                    <Link className="nav-link js-scroll-trigger" to="/admin">
                       Login
-                  </Link>
-                  </li>}
-
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
@@ -83,8 +82,8 @@ export class PageWrapper extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
-})
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
 export default connect(mapStateToProps)(withRouter(PageWrapper));
