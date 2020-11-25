@@ -310,12 +310,12 @@ export default withRouter(
         } else {
           console.log(values,props.auth.token);
           props.addPost(values, props.auth.token);
-          alert("Post saved!");
           values.title = "";
           values.slug = "";
           values.createdAt = null;
           values.status = false;
           values.content = "";
+          alert("Post saved!");
         }
       },
     })(withStyles(styles)(AddPost))

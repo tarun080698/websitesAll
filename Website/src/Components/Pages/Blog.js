@@ -40,7 +40,7 @@ class Blog extends Component {
             <div className="row">
               <div className="col-md-12">
                 <div className="text-center">
-                  {this.props.site.postCount > 0 ? (
+                  {this.props.site.postCount > this.props.site.posts.length ? (
                     <button
                       className="btn btn-default"
                       style={{    'font-size': '1.2rem',
