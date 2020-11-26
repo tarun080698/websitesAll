@@ -138,7 +138,7 @@ class AddPost extends Component {
     "color",
     "code",
     "code-block",
-    "size"
+    "size",
   ];
 
   render() {
@@ -308,7 +308,7 @@ export default withRouter(
           props.updatePost(post, props.auth.token);
           alert("Post updated!");
         } else {
-          console.log(values,props.auth.token);
+          console.log(values, props.auth.token);
           props.addPost(values, props.auth.token);
           values.title = "";
           values.slug = "";
