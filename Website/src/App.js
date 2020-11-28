@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Redirect, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import "./App.css";
 
@@ -20,6 +20,7 @@ import Team from "./Components/CommonComp/Team";
 
 //admin Panel
 import Login from "./Components/Pages/Login";
+import SignUp from "./Components/Pages/SignUp";
 import Dashboard from "./Components/Pages/Admin/Dashboard";
 import Posts from "./Components/Pages/Admin/Posts";
 import AddPost from "./Components/Pages/Admin/AddPost";
@@ -127,21 +128,21 @@ class App extends Component {
             }}
           />
 
-
-          {/* <Route
+          <Route
             exact={true}
-            path="/login"
+            path="/signup"
             render={(props) => {
-              return (
-                <div>
-                  {!this.props.auth.token &&
-                    <LoginWrapper>
-                      <Login />
-                    </LoginWrapper>}
-                  </div>
-              );
+              return <div>
+              {this.props.auth.token ? (
+                <Redirect to='/' />)
+              :
+                (<LoginWrapper>
+                      <SignUp />
+                    </LoginWrapper>)
+                }
+                </div>
             }}
-          /> */}
+          />
           <Route
             path="/"
             exact={true}
@@ -197,7 +198,7 @@ class App extends Component {
             )}
           />
           <Route
-            path="/blog:slug"
+            path="/blog/:slug"
             exact={true}
             render={(props) => (
               <PageWrapper>

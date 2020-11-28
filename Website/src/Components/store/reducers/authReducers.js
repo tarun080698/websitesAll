@@ -11,7 +11,6 @@ const auth = (state = defaultState, actions) => {
         user: actions.payload,
         token: actions.payload.token,
       };
-    
     case "REGISTER":
       return {
         ...state,

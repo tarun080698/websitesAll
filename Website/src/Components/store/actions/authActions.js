@@ -11,9 +11,9 @@ export const login = (email, password) => {
 
 
 
-export const register = (email, password) => {
+export const register = (email, name, password) => {
   return {
     type: "REGISTER",
-    payload: { email, password },
+    payload: { email, name, password },
   };
 };

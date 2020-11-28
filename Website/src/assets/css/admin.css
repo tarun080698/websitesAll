@@ -54,3 +54,7 @@
 .text-danger {
   font-size: 14px;
 }
+  
+.post-content img{
+  max-width: 100%;
+}

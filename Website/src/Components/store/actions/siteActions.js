@@ -22,3 +22,17 @@ export const getPostsCount = () => {
     });
   };
 };
+
+export const setPostData = (post) => {
+  return (dispatch) => {
+    dispatch({ type: "SET_POST_DATA", payload: post });
+  };
+};
+
+export const getPostBySlug = (slug, token) => {
+  return (dispatch) => {
+    API.getPostBySlug(slug, token, (res) => {
+      dispatch({ type: "SET_FULL_POST_DATA", payload: res.data });
+    });
+  };
+};

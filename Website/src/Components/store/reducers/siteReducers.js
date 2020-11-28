@@ -10,7 +10,7 @@ const site = (state = defaultState, action) => {
       return {
         ...state,
         postCount: action.payload,
-      }
+      };
     case "GOT_SITE_POST":
       return {
         ...state,
@@ -18,6 +18,17 @@ const site = (state = defaultState, action) => {
           ? state.posts.concat(action.payload)
           : action.payload,
       };
+    case 'SET_POST_DATA':
+      return {
+        ...state,
+        post: action.payload,
+      };
+    case "SET_FULL_POST_DATA":
+      return {
+        ...state,
+        post:
+          {...state.post, ...action.payload },
+      }
     default:
       return state;
   }

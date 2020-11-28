@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import * as SiteActions from "../store/actions/siteActions";
+import { connect } from "react-redux";
 
 import sampleImg from "../../assets/img/Net.PNG";
 
@@ -10,20 +12,17 @@ class BlogItem extends Component {
         <div
           className="portfolio-item"
           style={{
-            'overflow-wrap': 'anywhere',
-    // width: '380px',
-    // 'min-height': '400px',
-    'max-height': '400px',
-    // overflow: 'hidden',
-            padding: '20px',
-            margin: '15px'
-    
+            "overflow-wrap": "anywhere",
+            "max-height": "400px",
+            padding: "20px",
+            margin: "15px",
           }}
         >
           <Link
             className="portfolio-link"
             data-toggle="modal"
             to={`/blog/${this.props.post.slug}`}
+            onClick={() => this.props.setPostData(this.props.post)}
           >
             <div className="portfolio-hover">
               <div className="portfolio-hover-content">
@@ -43,7 +42,14 @@ class BlogItem extends Component {
             <div className="portfolio-caption-heading">
               {this.props.post.title}
             </div>
-            <div className="portfolio-caption-subheading text-muted" style={{'text-align': 'justify', fontSize:'1.3rem', paddingBottom: 10}}>
+            <div
+              className="portfolio-caption-subheading text-muted"
+              style={{
+                "text-align": "justify",
+                fontSize: "1.3rem",
+                paddingBottom: 10,
+              }}
+            >
               {this.props.post.slug}
             </div>
           </div>
@@ -53,4 +59,12 @@ class BlogItem extends Component {
   }
 }
 
-export default BlogItem;
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  setPostData: (post) => {
+    dispatch(SiteActions.setPostData(post));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlogItem);

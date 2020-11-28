@@ -6,7 +6,6 @@ const API = {
   makeFileUrl: (url, token) => {
     return host + url + "?access_token=" + token;
   },
-
   login: (email, password, success) => {
     axios
       .post(`${host}/api/users/login`, { email: email, password: password })
@@ -85,7 +84,18 @@ const API = {
   getSitePosts: (skip, success) => {
     axios
       .get(`${host}/api/Posts`, {
-        params: { filter: { skip: skip, limit: 6, include: "PostImage" } },
+        params: {
+          filter: {
+            skip: skip,
+            limit: 6,
+            include: "PostImage",
+              fields: {
+                id: true,
+                title: true,
+                slug: true,
+              },
+          },
+        },
       })
       .then((res) => {
         success(res);
@@ -97,7 +107,7 @@ const API = {
         params: {
           filter: {
             where: { slug: slug },
-            include: { Comments: "Profile" },
+            // include: { Comments: "Profile" },
           },
         },
       })
