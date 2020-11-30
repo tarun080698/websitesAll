@@ -1,19 +1,39 @@
-import API from '../../../utils/api';
+import API from "../../../utils/api";
 
 export const login = (email, password) => {
   return (dispatch) => {
     API.login(email, password, (res) => {
-      console.log("result", res.data);
-      dispatch({ type: "LOGIN", payload: { user: res.data, token: res.data.id, userId: res.data.userId } });
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          user: res.data,
+          token: res.data.id,
+          userId: res.data.userId,
+        },
+      });
+    });
+  };
+};
+
+export const register = (name, email, password) => {
+  return (dispatch) => {
+    API.register(name, email, password, (res) => {
+      if (res.status === 200) {
+        dispatch(login(email, password));
+      } else {
+        dispatch({ type: "SHOW_ERR", payload: {message: 'Please check, if email or username does not exists.', code: '422'}})
+      }
     });
   };
 };
 
 
-
-export const register = (email, name, password) => {
-  return {
-    type: "REGISTER",
-    payload: { email, name, password },
+export const logout = (token) => {
+  return (dispatch) => {
+    API.logout(token ,res => {
+      if (res.status === 204) {
+        dispatch({ type: "LOGOUT", payload: 'user logged out!' });
+      }
+    });
   };
 };

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { withRouter, Link as RouterLink } from "react-router-dom";
+import * as authActions from '../Components/store/actions/authActions';
+import { Button } from "@material-ui/core";
 
 export class PageWrapper extends Component {
   render() {
@@ -59,11 +61,14 @@ export class PageWrapper extends Component {
                     Contact
                   </Link>
                 </li>
-                {this.props.auth.token ? (
+                {/* {this.props.auth.token ? (
                   <li className="nav-item">
-                    <Link className="nav-link js-scroll-trigger" to="/">
+                    <Button className="nav-link js-scroll-trigger" onclick={() => {
+                      console.log('clicked');
+                      this.props.logout(this.props.auth.token);
+                    }}>
                       Logout
-                    </Link>
+                    </Button>
                   </li>
                 ) : (
                   <li className="nav-item">
@@ -71,7 +76,7 @@ export class PageWrapper extends Component {
                       Login
                     </Link>
                   </li>
-                )}
+                )} */}
               </ul>
             </div>
           </div>
@@ -86,4 +91,10 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(withRouter(PageWrapper));
+const mapDispatchToProps = (dispatch) => ({
+  logout: (token) => {
+    dispatch(authActions.logout(token));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PageWrapper));

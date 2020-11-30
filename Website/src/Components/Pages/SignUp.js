@@ -81,16 +81,29 @@ class SignUp extends Component {
                       </div>
                     );
                   })}
-                  {this.props.values.email.trim() !== "" &&
-                    this.props.values.name.trim() !== "" &&
-                    this.props.values.cpassword.trim() !== "" &&
-                    this.props.values.password.trim() !== "" && (
-                      <div className="col-md-12">
-                        <button className="btn-login" type="submit">
-                          Sign up
-                        </button>
-                      </div>
-                    )}
+                  <div className="col-md-12">
+                    <p className="text-danger muted ">
+                      {this.props.values.password.length < 6 ||
+                      this.props.values.cpassword.length < 6
+                        ? "*Password should contain atleast 6 character"
+                        : this.props.values.password !==
+                          this.props.values.cpassword
+                        ? "*Passwords does not match!"
+                        : this.props.values.email.trim() !== "" &&
+                          this.props.values.name.trim() !== "" &&
+                          this.props.values.cpassword.trim() !== "" &&
+                          this.props.values.password.trim() !== "" && (
+                            <div>
+                              <p className="text-danger muted">
+                                {this.props.auth.error || ""}
+                              </p>
+                              <button className="btn-login" type="submit">
+                                Sign up
+                              </button>
+                            </div>
+                          )}
+                    </p>
+                  </div>
                 </form>
               </div>
             </center>
@@ -108,8 +121,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  register: (email, password) => {
-    dispatch(authActions.register(email, password));
+  register: (email, name, password) => {
+    dispatch(authActions.register(email, name, password));
   },
 });
 
@@ -126,7 +139,9 @@ export default connect(
     }),
 
     validationSchema: Yup.object().shape({
-      email: Yup.string().email('Invaild email.').required("enter your email address."),
+      email: Yup.string()
+        .email("Invaild email.")
+        .required("enter your email address."),
       name: Yup.string().required("enter your name."),
       password: Yup.string()
         .min(6, "min. 6 characters required.")
@@ -134,7 +149,7 @@ export default connect(
       cpassword: Yup.string()
         .min(6, "min. 6 characters required.")
         .required("password and confirm password must be same.")
-        .test("passwords", "both passowrds should be same.", (value)=> {
+        .test("passwords", "both passowrds should be same.", (value) => {
           const { password } = this.parent;
           return password === value;
         }),

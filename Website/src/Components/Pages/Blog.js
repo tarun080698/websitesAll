@@ -48,7 +48,6 @@ class Blog extends Component {
                         'font-family': '"Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
                         'font-weight': '700',
                         'letter-spacing': '0.2625em',
-                        // 'text-transform': 'uppercase'
                       }}
                       
                       onClick={(e) => {

@@ -137,7 +137,7 @@ class App extends Component {
                 <Redirect to='/' />)
               :
                 (<LoginWrapper>
-                      <SignUp />
+                    <SignUp {...props}/>
                     </LoginWrapper>)
                 }
                 </div>

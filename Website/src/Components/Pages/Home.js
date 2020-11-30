@@ -7,6 +7,9 @@ import Team from "../CommonComp/Team";
 import Contact from "../Pages/Contact";
 import About from "../Pages/About";
 
+import { connect } from "react-redux";
+import * as authActions from "../store/actions/authActions";
+
 import image from '../../assets/img/header-bg.jpg'
 
 class Home extends Component {
@@ -31,5 +34,17 @@ class Home extends Component {
     );
   }
 }
+
+// const mapStateToProps = (state) => {
+//   return {
+//     auth: state.auth,
+//   };
+// };
+
+// const mapDispatchToProps = (dispatch) => ({
+//   logout: (token) => {
+//     dispatch(authActions.logout(token));
+//   },
+// });
 
 export default Home;

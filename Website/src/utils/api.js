@@ -13,6 +13,24 @@ const API = {
         success(res);
       });
   },
+  register: (name, email, password, success) => {
+    axios
+      .post(`${host}/api/users`, { username: name, email: email,  password: password })
+      .then((res) => {
+        success(res);
+      }).catch(err => {
+        console.log(err);
+        success(err);
+      });
+  },
+  logout: (token, success) => {
+    axios
+      .post(`${host}/api/users/logout?access_token?${token}`)
+      .then((res) => {
+        console.log('logout ===> ',res.data)
+        success(res);
+      });
+  },
   getUsers: (token, success) => {
     axios.get(`${host}/api/users?access_token=${token}`).then((res) => {
       success(res);
