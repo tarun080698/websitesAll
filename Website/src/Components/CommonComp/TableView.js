@@ -83,11 +83,10 @@ class TableView extends Component {
                           >
                             
                             {
-                              column.name === "title" ? (
+                              column.name === "id" ? (
                               <Link
-                                to={`/admin/posts/edit/${id}`}
-                                component={RouterLink}
-                              >
+                                to={`/admin/posts/edit/${row[column.name]}`}
+                                component={RouterLink}>
                                 <u>{row[column.name]}</u>
                               </Link>
                             ) : (

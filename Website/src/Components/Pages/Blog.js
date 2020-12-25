@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter, Link as RouterLink } from "react-router-dom";
 import Header from "../CommonComp/Header";
-import image from "../../assets/img/wallpaper.jpeg";
+// import image from "../../assets/img/wallpaper.jpeg";
+import imageSample from "../../assets/img/sample.jpg";
+
 import * as SiteActions from "../store/actions/siteActions";
 import BlogItem from "../CommonComp/BlogItem";
 
@@ -19,12 +21,12 @@ class Blog extends Component {
           title="Welcome To Our Blog's Page!"
           subtitle="Read all of our stories"
           showbtn={false}
-          image={image}
+          image={imageSample}
         />
         <section
           className="page-section "
           id="portfolio"
-          style={{ backgroundColor: "#272727" }}
+          style={{ backgroundColor: "#BB9E90" }}
         >
           <div className="container">
             <div className="row">

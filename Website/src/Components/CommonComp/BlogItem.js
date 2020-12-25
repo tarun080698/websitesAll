@@ -40,7 +40,14 @@ class BlogItem extends Component {
           </Link>
           <div className="portfolio-caption" style={{ padding: "0.5rem" }}>
             <div className="portfolio-caption-heading">
-              {this.props.post.title}
+              <Link
+                className="portfolio-link"
+                data-toggle="modal"
+                to={`/blog/${this.props.post.slug}`}
+                onClick={() => this.props.setPostData(this.props.post)}
+              >
+                {this.props.post.title}
+              </Link>
             </div>
             <div
               className="portfolio-caption-subheading text-muted"

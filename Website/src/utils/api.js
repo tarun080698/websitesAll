@@ -75,7 +75,7 @@ const API = {
     axios
       .get(`${host}/api/Posts/${id}?access_token=${token}`, {
         params: {
-          filter: { include: "PostImage" },
+          filter: { include: ['PostImage', 'Comments'] },
         },
       })
       .then((res) => {

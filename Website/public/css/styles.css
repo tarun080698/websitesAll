@@ -10498,7 +10498,7 @@ img::-moz-selection {
 #mainNav {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: #272727;
+  background-color: transparent;
   font-size: x-large;
 }
 #mainNav .navbar-toggler {
@@ -10543,7 +10543,9 @@ img::-moz-selection {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     border: none;
-    background-color: #272727;
+    position: absolute;
+    /* background-color: #272727; */
+    background-color: transparent;
     font-size: x-large;
     transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
   }
@@ -10582,8 +10584,8 @@ header.masthead {
   background-image: url("../assets/img/header-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: center center;
-  background-size: cover;
+  /* background-position: center center; */
+  background-size: cover; 
 }
 header.masthead .masthead-subheading {
   font-size: 1.5rem;
