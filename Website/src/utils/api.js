@@ -13,23 +13,37 @@ const API = {
         success(res);
       });
   },
-  register: (name, email, password, success) => {
+  getUser: (userId, token, success) => {
     axios
-      .post(`${host}/api/users`, { username: name, email: email,  password: password })
+      .get(`${host}/api/users/${userId}?access_token=${token}`, {
+        params: {
+          filter: {
+        include: 'Profile'
+      }}})
       .then((res) => {
         success(res);
-      }).catch(err => {
+      });
+  },
+  register: (name, email, password, success) => {
+    axios
+      .post(`${host}/api/users`, {
+        username: name,
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        success(res);
+      })
+      .catch((err) => {
         console.log(err);
         success(err);
       });
   },
   logout: (token, success) => {
-    axios
-      .post(`${host}/api/users/logout?access_token?${token}`)
-      .then((res) => {
-        console.log('logout ===> ',res.data)
-        success(res);
-      });
+    axios.post(`${host}/api/users/logout?access_token?${token}`).then((res) => {
+      console.log("logout ===> ", res.data);
+      success(res);
+    });
   },
   getUsers: (token, success) => {
     axios.get(`${host}/api/users?access_token=${token}`).then((res) => {
@@ -107,11 +121,11 @@ const API = {
             skip: skip,
             limit: 6,
             include: "PostImage",
-              fields: {
-                id: true,
-                title: true,
-                slug: true,
-              },
+            fields: {
+              id: true,
+              title: true,
+              slug: true,
+            },
           },
         },
       })
@@ -125,7 +139,7 @@ const API = {
         params: {
           filter: {
             where: { slug: slug },
-            // include: { Comments: "Profile" },
+            include: { Comments: "Profile" },
           },
         },
       })
@@ -137,6 +151,32 @@ const API = {
     axios.get(`${host}/api/Posts/count`).then((res) => {
       success(res);
     });
+  },
+  getCommentById: (commentId, token, success) => {
+    axios
+      .get(`${host}/api/Comments/${commentId}?access_token=${token}`, {
+        params: {
+          filter: {
+            include: "Profile",
+          },
+        },
+      })
+      .then((res) => {
+        success(res);
+      });
+  },
+  postComment: (comment, token, success) => {
+    axios
+      .post(`${host}/api/Comments?access_token=${token}`, comment, {
+        params: {
+          filter: {
+            include: "Profile",
+          },
+        },
+      })
+      .then((res) => {
+        success(res);
+      });
   },
 };
 

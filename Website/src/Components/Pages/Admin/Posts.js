@@ -12,10 +12,10 @@ import { Link as RouterLink } from "react-router-dom";
 // import Link from "@material-ui/core/Link";
 
 const columns = [
-  { label: "ID", name: "id" },
-  { label: "Created at", name: "createdAt" },
   { label: "Title", name: "title" },
   { label: "Slug", name: "slug" },
+  { label: "ID", name: "id" },
+  { label: "Created at", name: "createdAt" },
 ];
 
 const styles = (theme) => ({

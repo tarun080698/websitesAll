@@ -45,6 +45,7 @@ const styles = (theme) => ({
 
 class TableView extends Component {
   render() {
+    
     const { classes } = this.props;
     const { rows } = this.props;
 
@@ -72,6 +73,7 @@ class TableView extends Component {
                   return (
                     <TableRow key={i} className={classes.trow}>
                       {columns.map((column, i) => {
+                        const id = column.name === 'id' ? column.name : ''
                         return (
                           <TableCell
                             className={classes.cell}
@@ -79,9 +81,11 @@ class TableView extends Component {
                             component="th"
                             scope="row"
                           >
-                            {column.name === "id" ? (
+                            
+                            {
+                              column.name === "title" ? (
                               <Link
-                                to={`/admin/posts/edit/${row[column.name]}`}
+                                to={`/admin/posts/edit/${id}`}
                                 component={RouterLink}
                               >
                                 <u>{row[column.name]}</u>

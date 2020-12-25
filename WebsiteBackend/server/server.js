@@ -38,9 +38,9 @@ app.models.User.afterRemote('create', (ctx, user, next) => {
   console.log('new user is', user);
   app.models.Profile.create(
     {
-      firstname: user.username,
-      lastname: user.email,
-      created_at: null,
+      name: user.username,
+      email: user.email,
+      created_at: new Date(),
       userId: user.id,
       dob: new Date(),
     },

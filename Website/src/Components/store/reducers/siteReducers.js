@@ -27,8 +27,17 @@ const site = (state = defaultState, action) => {
       return {
         ...state,
         post:
-          {...state.post, ...action.payload },
-      }
+          { ...state.post, ...action.payload },
+      };
+      case "ADDED_COMMENT":
+        return {
+          ...state,
+          post:
+          {
+            ...state.post,
+            Comments: state.post.Comments.concat(action.payload)
+          },
+        }
     default:
       return state;
   }

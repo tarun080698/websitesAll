@@ -232,10 +232,10 @@ class AddPost extends Component {
             </div>
           </Paper>
         </Form>
-        <Alert severity="success">
+        {/* <Alert severity="success">
           <AlertTitle>Success</AlertTitle>
           This is a success alert — <strong>check it out!</strong>
-        </Alert>
+        </Alert> */}
       </div>
     );
   }

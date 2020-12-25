@@ -1,24 +1,52 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "../CommonComp/Header";
+import Footer from "../CommonComp/Footer";
 import API from "../../utils/api";
 import * as SiteActions from "../store/actions/siteActions";
 import { Link } from "react-router-dom";
-// import CommentBuilder from '../Common/CommentBuilder';
+import CommentBuilder from "../CommonComp/CommentBuilder";
 import imageSample from "../../assets/img/sample.jpg";
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemSecondaryAction,
+  ListItemText,
+  Paper,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import FavoriteBorderIcon from "@material-ui/icons/ThumbUpAltTwoTone";
 
+const styles = (theme) =>
+  makeStyles({
+    root: {
+      width: "920",
+      // maxWidth: "36ch",
+      backgroundColor: theme.palette.background.paper,
+    },
+    inline: {
+      display: "inline",
+    },
+  });
 class SingleBlog extends Component {
   componentDidMount() {
     this.props.getPostBySlug(
       this.props.match.params.slug,
       this.props.auth.token
     );
-    console.log(this.props.site.post);
   }
 
   render() {
+    const classes = styles;
+
     return (
-      <div>
+      <div style={{ backgroundColor: "lightgrey" }}>
         <Header
           title=""
           subtitle={this.props.site.post.title}
@@ -46,36 +74,77 @@ class SingleBlog extends Component {
               ></div>
             </div>
           </div>
-
-          {/* <div className="row">
-                        <div className="col-md-12">
-                            <h3>Comments</h3>
-                            {this.props.auth.token ?
-                                <CommentBuilder />
-                            : 
-                                <p>Need an account?  <Link to="/signup">Sign Up</Link></p>
-                            }
-                        </div>
-
-                    </div>
-                    <div className="row">
-
-                        {this.props.site.post.Comments ?
-                            this.props.site.post.Comments.length > 0 ?
-                                this.props.site.post.Comments.map((comment, i) => {
-                                    return (
-                                        <div className="col-md-12">
-                                            <h4>{comment.Profile ? comment.Profile.name : ''}</h4>
-                                            <p>{comment.content}</p>
-                                        </div>
-                                    )
-                                })
-                            : null
-                        : null
-                        }
-                    </div> 
-        </div> */}
+          <br />
+          <Divider
+            style={{ backgroundColor: "#272727", height: 2 }}
+            variant="fullWidth"
+          />
+          <br />
+          <div className="row">
+            <div className="col-md-12">
+              <h3>Leave a comment</h3>
+              {this.props.auth.token ? (
+                <CommentBuilder />
+              ) : (
+                <p>
+                  Need an account? <Link to="/signup">Sign Up</Link>
+                </p>
+              )}
+            </div>
+          </div>
+          <br />
+          <h3>Comments</h3>
+          <div className="row">
+            <List className={classes.root}>
+              {this.props.site.post.Comments
+                ? this.props.site.post.Comments.length > 0
+                  ? this.props.site.post.Comments.reverse().map((comment, i) => {
+                      return (
+                        <Paper elevation={0} style={{ marginBottom: 5, padding: 10, width: 900 }}>
+                          <Typography
+                            style={{
+                              marginBottom: 5, fontSize: 18, fontWeight: 600
+                            }}
+                            component="span"
+                            variant="body2"
+                            className={classes.inline}
+                            color="textPrimary"
+                          >
+                            {/* {this.props.site} */}
+                            {comment.Profile ? <>{comment.Profile.name}</>: "Anonymus user"}
+                          </Typography>
+                          <br />
+                          <Typography
+                            style={{
+                              marginBottom: 5, fontSize: 15, padding: '0 10px 10px 10px'
+                            }}
+                            component="span"
+                            variant="body2"
+                            className={classes.inline}
+                            color="textPrimary"
+                          >
+                            {comment.content}
+                          </Typography>
+                          <br />
+                          <p style={{ justifyContent: "space-between", paddingBottom: 6  }}>
+                            <Button style={{float: 'left',}} size="small">
+                              <FavoriteBorderIcon />
+                            </Button>
+                            <Typography style={{float: 'right',}} variant="body2" component="span">
+                              {comment.createdAt.substring(0, 10)}{" "}
+                              {comment.createdAt.substring(11, 16)}
+                            </Typography>
+                          </p>
+                        </Paper>
+                      );
+                    })
+                  : null
+                : null}
+            </List>
+          </div>
         </div>
+        <br />
+        <Footer />
       </div>
     );
   }

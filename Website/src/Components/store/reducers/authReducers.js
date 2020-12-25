@@ -3,16 +3,25 @@ const defaultState = {
   token: null,
   error: null,
   lgMessage: null,
+  profile: {}
 };
 
 const auth = (state = defaultState, actions) => {
   switch (actions.type) {
     case "LOGIN":
+      console.log('login',actions.payload)
       return {
         ...state,
         user: actions.payload,
         token: actions.payload.token,
       };
+    case "AFTER_LOGIN":
+      console.log('after login',actions.payload)
+        return {
+          ...state,
+          user: actions.payload,
+          profile: actions.payload.Profile,
+        };
     case "REGISTER":
       return {
         ...state,

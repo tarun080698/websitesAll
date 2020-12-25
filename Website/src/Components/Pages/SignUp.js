@@ -149,10 +149,10 @@ export default connect(
       cpassword: Yup.string()
         .min(6, "min. 6 characters required.")
         .required("password and confirm password must be same.")
-        .test("passwords", "both passowrds should be same.", (value) => {
-          const { password } = this.parent;
-          return password === value;
-        }),
+        // .test("passwords", "both passowrds should be same.", (value) => {
+        //   const { password } = this.parent ? this.parent : '';
+        //   return password === value;
+        // }),
     }),
 
     handleSubmit: (values, { setSubmitting }, register) => {

@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import * as userActions from "../../store/actions/userActions";
+import { Divider } from "@material-ui/core";
 
 class Dashboard extends Component {
 
   componentDidMount() {
-    this.props.getUserDetails(this.props.auth.user.userId, this.props.auth.token)
-    // console.log(this.props.user);
+    // console.log(this.props.user.profile.name)
+    // this.props.getUserDetails(this.props.user.user.id, this.props.auth.token)
+    // console.log(this.props.user.user);
   }
   render() {
     return (
@@ -19,8 +21,15 @@ class Dashboard extends Component {
           color: "black",
         }}
       >
-        <h1>You are logged in with token :</h1>
-        <p>{this.props.auth.token}</p>
+        
+        {/* {this.props.user.profile && <><h3>Name: {this.props.user.profile.name}</h3>
+        <h3>Email Address: {this.props.user.profile.email}</h3>
+        <h3>Joined Speed Up on {this.props.user.profile.created_at}</h3>
+          <br />
+          </>
+        } */}
+        <Divider style={{height:4}}/>
+        <h3>Your current access token: {this.props.auth.token}</h3>
       </div>
     );
   }
