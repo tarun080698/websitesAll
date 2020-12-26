@@ -1,6 +1,12 @@
 import axios from "axios";
 
-const host = "http://localhost:8080";
+let host;
+if(process.env.NODE_ENV === 'development'){
+    host = 'http://localhost:8080';
+}else{
+    host = 'http://speedup.com';
+}
+
 
 const API = {
   makeFileUrl: (url, token) => {
@@ -46,7 +52,12 @@ const API = {
     });
   },
   getUsers: (token, success) => {
-    axios.get(`${host}/api/users?access_token=${token}`).then((res) => {
+    axios.get(`${host}/api/users?access_token=${token}`, {
+      params: {
+        filter: {
+        include : ['Profile', 'Post']
+      }
+    }}).then((res) => {
       success(res);
     });
   },

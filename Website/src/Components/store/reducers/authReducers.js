@@ -6,38 +6,36 @@ const defaultState = {
   profile: {}
 };
 
-const auth = (state = defaultState, actions) => {
-  switch (actions.type) {
+const auth = (state = defaultState, action) => {
+  switch (action.type) {
     case "LOGIN":
-      console.log('login',actions.payload)
       return {
         ...state,
-        user: actions.payload,
-        token: actions.payload.token,
+        user: action.payload.user,
+        token: action.payload.token,
       };
     case "AFTER_LOGIN":
-      console.log('after login',actions.payload)
         return {
           ...state,
-          user: actions.payload,
-          profile: actions.payload.Profile,
+          profile: action.payload.Profile,
         };
     case "REGISTER":
+      console.log(action.payload)
       return {
         ...state,
-        user: actions.payload,
-        token: actions.payload.token,
+        user: action.payload.user,
+        token: action.payload.token,
         error: null,
       };
     case "SHOW_ERR":
       return {
         ...state,
-        error: actions.payload.code !== '422' ? null : actions.payload.message,
+        error: action.payload.code !== '422' ? null : action.payload.message,
       };
     case "LOGOUT":
       return {
         ...state,
-        lgMessage: actions.payload,
+        lgMessage: action.payload,
         token: null,
       };
     default:

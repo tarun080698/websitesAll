@@ -108,6 +108,24 @@ class App extends Component {
             }}
           />
 
+        <Route
+            exact={true}
+            path="/login"
+            render={(props) => {
+              return (
+                <div>
+                  {this.props.auth.token ? (
+                    <Redirect to='/' />
+                  ) : (
+                    <LoginWrapper>
+                      <Login />
+                    </LoginWrapper>
+                  )}
+                </div>
+              );
+            }}
+          />
+          
           <Route
             exact={true}
             path="/admin"

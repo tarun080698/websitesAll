@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter, Link as RouterLink } from "react-router-dom";
+import { withRouter} from "react-router-dom";
 import Header from "../CommonComp/Header";
 // import image from "../../assets/img/wallpaper.jpeg";
 import imageSample from "../../assets/img/sample.jpg";

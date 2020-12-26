@@ -13,7 +13,7 @@ export const login = (email, password) => {
       });
 
       API.getUser(res.data.userId, res.data.id, (res2) => {
-        // console.log(res.data.userId, res.data.id)
+        // console.log('in auth actions after login')
         dispatch({
           type: "AFTER_LOGIN",
           payload: res2.data,

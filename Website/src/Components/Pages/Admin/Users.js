@@ -8,7 +8,7 @@ import * as AdminActions from "../../store/actions/adminActions";
 import GroupIcon from "@material-ui/icons/Group";
 
 const columns = [
-  { label: "Name", name: "name" },
+  { label: "Name", name: "username" },
   { label: "Email", name: "email" },
   { label: "ID", name: "id" },
 ];
@@ -45,7 +45,7 @@ class Users extends Component {
           </p>
         </center>
         {/* </Paper> */}
-        <TableView columns={columns} rows={users} />
+        <TableView columns={columns} rows={users} item='user'/>
       </div>
     );
   }

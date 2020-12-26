@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { withRouter, Link as RouterLink } from "react-router-dom";
-import * as authActions from '../Components/store/actions/authActions';
 import { Button } from "@material-ui/core";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter, Link  } from "react-router-dom";
+import * as authActions from '../Components/store/actions/authActions';
 
 export class PageWrapper extends Component {
   render() {
@@ -61,22 +60,27 @@ export class PageWrapper extends Component {
                     Contact
                   </Link>
                 </li>
-                {/* {this.props.auth.token ? (
-                  <li className="nav-item">
-                    <Button className="nav-link js-scroll-trigger" onclick={() => {
-                      console.log('clicked');
-                      this.props.logout(this.props.auth.token);
-                    }}>
-                      Logout
-                    </Button>
+                {this.props.auth.token ? (
+                  <><li className="nav-item">
+                    <Link className="nav-link js-scroll-trigger" to="/admin">
+                      Dashboard
+                    </Link>
                   </li>
+                  <li className="nav-item">
+                  <Button className="nav-link js-scroll-trigger" onclick={() => {
+                    console.log('clicked');
+                    this.props.logout(this.props.auth.token);
+                  }}>
+                    Logout
+                  </Button>
+                </li></>
                 ) : (
                   <li className="nav-item">
                     <Link className="nav-link js-scroll-trigger" to="/admin">
                       Login
                     </Link>
                   </li>
-                )} */}
+                )}
               </ul>
             </div>
           </div>

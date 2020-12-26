@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Header from "../CommonComp/Header";
 import Footer from "../CommonComp/Footer";
-import API from "../../utils/api";
 import * as SiteActions from "../store/actions/siteActions";
 import { Link } from "react-router-dom";
 import CommentBuilder from "../CommonComp/CommentBuilder";
@@ -34,6 +33,7 @@ class SingleBlog extends Component {
       this.props.match.params.slug,
       this.props.auth.token
     );
+    console.log(this.props.auth)
   }
 
   render() {
@@ -80,9 +80,13 @@ class SingleBlog extends Component {
               {this.props.auth.token ? (
                 <CommentBuilder />
               ) : (
+                <><p>
+                please login to post your thoughts? <Link to="/admin">Sign Up</Link>
+              </p>
                 <p>
                   Need an account? <Link to="/signup">Sign Up</Link>
-                </p>
+                    </p>
+                    </>
               )}
             </div>
           </div>
@@ -104,8 +108,7 @@ class SingleBlog extends Component {
                             className={classes.inline}
                             color="textPrimary"
                           >
-                            {/* {this.props.site} */}
-                            {comment.Profile ? <>{comment.Profile.name}</>: "Anonymus user"}
+                            {comment.name ? <>{comment.name}</>: "Anonymus user"}
                           </Typography>
                           <br />
                           <Typography

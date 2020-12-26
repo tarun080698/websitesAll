@@ -25,6 +25,7 @@ class CommentBuilder extends Component {
             const comment = {
               postId: this.props.site.post.id,
               profileId: this.props.auth.profile.id,
+              name: this.props.auth.profile.name,
               userId: this.props.auth.user.id,
               content: this.props.values.content,
               createdAt: new Date(),

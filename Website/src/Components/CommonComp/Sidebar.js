@@ -9,6 +9,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import FaceIcon from "@material-ui/icons/Face";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import InsertDriveFile from "@material-ui/icons/InsertDriveFile";
+import HomeIcon from '@material-ui/icons/Home';
 
 function ListItemLink(props) {
   return <ListItem button component={RouterLink} {...props} />;
@@ -35,6 +36,12 @@ export default class Sidebar extends Component {
             <FaceIcon />
           </ListItemIcon>
           <ListItemText primary="Users" />
+        </ListItemLink>
+        <ListItemLink to="/">
+          <ListItemIcon style={{ color: "aliceblue"}}>
+            <HomeIcon  />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
         </ListItemLink>
       </List>
     );

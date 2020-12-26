@@ -70,10 +70,10 @@ class TableView extends Component {
           <TableBody>
             {rows
               ? rows.map((row, i) => {
-                  return (
+                console.log(this.props.item)
+                return (
                     <TableRow key={i} className={classes.trow}>
                       {columns.map((column, i) => {
-                        const id = column.name === 'id' ? column.name : ''
                         return (
                           <TableCell
                             className={classes.cell}
@@ -83,7 +83,7 @@ class TableView extends Component {
                           >
                             
                             {
-                              column.name === "id" ? (
+                              column.name === "id" && this.props.item !== 'user' ? (
                               <Link
                                 to={`/admin/posts/edit/${row[column.name]}`}
                                 component={RouterLink}>

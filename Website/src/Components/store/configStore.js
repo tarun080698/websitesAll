@@ -11,6 +11,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
   let store = createStore(persistedReducer, applyMiddleware(thunk));
   let persistor = persistStore(store);

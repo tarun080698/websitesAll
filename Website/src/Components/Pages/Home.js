@@ -7,8 +7,6 @@ import Team from "../CommonComp/Team";
 import Contact from "../Pages/Contact";
 import About from "../Pages/About";
 
-import { connect } from "react-redux";
-import * as authActions from "../store/actions/authActions";
 
 import image from '../../assets/img/header-bg.jpg'
 
