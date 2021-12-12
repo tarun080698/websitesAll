@@ -11,8 +11,8 @@ import SaveIcon from "@material-ui/icons/Save";
 import ImageIcon from "@material-ui/icons/Image";
 import { withRouter } from "react-router-dom";
 import API from "../../../utils/api";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+// import ReactQuill from "react-quill";
+// import "../../../../node_modules/react-quill/dist/quill.snow.css";
 
 /*  global $  */
 const styles = (theme) => ({
@@ -165,7 +165,7 @@ class AddPost extends Component {
               margin="normal"
               fullWidth
             />
-            <ReactQuill
+            {/* <ReactQuill
               value={this.props.values.content}
               placeholder="write something cool..."
               modules={this.modules}
@@ -174,7 +174,7 @@ class AddPost extends Component {
               onChange={(val) => {
                 this.props.setFieldValue("content", val);
               }}
-            />
+            /> */}
           </Paper>
           <Paper className={classes.rightSide} elevation={10}>
             Status
