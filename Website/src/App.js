@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Redirect, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import "./App.css";
 
@@ -12,13 +12,19 @@ import LoginWrapper from "../src/Components/LoginWrapper";
 import Home from "../src/Components/Pages/Home";
 import About from "../src/Components/Pages/About";
 import Contact from "./Components/Pages/Contact";
+import SingleBlog from "./Components/Pages/SingleBlog";
+import Blog from "./Components/Pages/Blog";
 import Portfolio from "./Components/CommonComp/Portfolio";
 import Services from "./Components/CommonComp/Services";
 import Team from "./Components/CommonComp/Team";
 
 //admin Panel
 import Login from "./Components/Pages/Login";
-import Dashboard from "../src/Components/Pages/Dashboard";
+import SignUp from "./Components/Pages/SignUp";
+import Dashboard from "./Components/Pages/Admin/Dashboard";
+import Posts from "./Components/Pages/Admin/Posts";
+import AddPost from "./Components/Pages/Admin/AddPost";
+import Users from "./Components/Pages/Admin/Users";
 
 class App extends Component {
   render() {
@@ -26,6 +32,102 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <Route
+            exact={true}
+            path="/admin/users"
+            render={(props) => {
+              return (
+                <div>
+                  {this.props.auth.token ? (
+                    <AdminWrapper>
+                      <Users />
+                    </AdminWrapper>
+                  ) : (
+                    <LoginWrapper>
+                      <Login />
+                    </LoginWrapper>
+                  )}
+                </div>
+              );
+            }}
+          />
+          <Route
+            exact={true}
+            path="/admin/posts/:view/:id"
+            render={(props) => {
+              return (
+                <div>
+                  {this.props.auth.token ? (
+                    <AdminWrapper>
+                      <AddPost />
+                    </AdminWrapper>
+                  ) : (
+                    <LoginWrapper>
+                      <Login />
+                    </LoginWrapper>
+                  )}
+                </div>
+              );
+            }}
+          />
+          <Route
+            exact={true}
+            path="/admin/posts/:view"
+            render={(props) => {
+              return (
+                <div>
+                  {this.props.auth.token ? (
+                    <AdminWrapper>
+                      <AddPost />
+                    </AdminWrapper>
+                  ) : (
+                    <LoginWrapper>
+                      <Login />
+                    </LoginWrapper>
+                  )}
+                </div>
+              );
+            }}
+          />
+          <Route
+            exact={true}
+            path="/admin/posts"
+            render={(props) => {
+              return (
+                <div>
+                  {this.props.auth.token ? (
+                    <AdminWrapper>
+                      <Posts />
+                    </AdminWrapper>
+                  ) : (
+                    <LoginWrapper>
+                      <Login />
+                    </LoginWrapper>
+                  )}
+                </div>
+              );
+            }}
+          />
+
+        <Route
+            exact={true}
+            path="/login"
+            render={(props) => {
+              return (
+                <div>
+                  {this.props.auth.token ? (
+                    <Redirect to='/' />
+                  ) : (
+                    <LoginWrapper>
+                      <Login />
+                    </LoginWrapper>
+                  )}
+                </div>
+              );
+            }}
+          />
+          
+          <Route
+            exact={true}
             path="/admin"
             render={(props) => {
               return (
@@ -43,6 +145,22 @@ class App extends Component {
               );
             }}
           />
+
+          <Route
+            exact={true}
+            path="/signup"
+            render={(props) => {
+              return <div>
+              {this.props.auth.token ? (
+                <Redirect to='/' />)
+              :
+                (<LoginWrapper>
+                    <SignUp {...props}/>
+                    </LoginWrapper>)
+                }
+                </div>
+            }}
+          />
           <Route
             path="/"
             exact={true}
@@ -54,6 +172,7 @@ class App extends Component {
           />
           <Route
             path="/services"
+            exact={true}
             render={(props) => (
               <PageWrapper>
                 <Services {...props} />
@@ -62,6 +181,7 @@ class App extends Component {
           />
           <Route
             path="/about"
+            exact={true}
             render={(props) => (
               <PageWrapper>
                 <About {...props} />
@@ -70,6 +190,7 @@ class App extends Component {
           />
           <Route
             path="/contact"
+            exact={true}
             render={(props) => (
               <PageWrapper>
                 <Contact {...props} />
@@ -78,15 +199,35 @@ class App extends Component {
           />
           <Route
             path="/portfolio"
+            exact={true}
             render={(props) => (
               <PageWrapper>
                 <Portfolio {...props} />
               </PageWrapper>
             )}
           />
+          <Route
+            path="/blog"
+            exact={true}
+            render={(props) => (
+              <PageWrapper>
+                <Blog {...props} />
+              </PageWrapper>
+            )}
+          />
+          <Route
+            path="/blog/:slug"
+            exact={true}
+            render={(props) => (
+              <PageWrapper>
+                <SingleBlog {...props} />
+              </PageWrapper>
+            )}
+          />
 
           <Route
             path="/team"
+            exact={true}
             render={(props) => (
               <PageWrapper>
                 <Team {...props} />

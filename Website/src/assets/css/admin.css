@@ -1,17 +1,29 @@
 .login-page {
   padding-top: 100px;
   min-height: 100vh;
-  background-color: lightgray;
+  background-color: black !important;
 }
 
-.login-form{
-  max-width: 600px;
-  width: max-content;
+.login-form {
+  width: 800px;
+  height: 400px;
   margin: auto;
-  padding: 30px;
-  background-color: aliceblue;
-  box-shadow: 0px 0px 12px rgba(204, 206, 211, 0.6);
-  border-radius: 12.5px;
+  padding: 50px;
+  /* color: darkslategrey; */
+  color: whitesmoke;
+  background-color: #161d20;
+  border-radius: 10px;
+}
+
+.login-form:hover {
+  box-shadow: 0px 0px 12px rgba(252, 252, 252, 0.6);
+}
+
+.btn-login {
+  color: whitesmoke;
+  background-color: darkslategray;
+  font-size: large;
+  border: none;
 }
 
 .login-form h1 form-page {
@@ -19,19 +31,30 @@
   font-size: 28px;
   width: 100%;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+.btn-login {
+  color: whitesmoke;
+  background-color: darkslategrey;
+  border: none;
+  font-size: x-large;
 }
 
 .form-page {
-    text-shadow: 0 0 black;
-    font-size: 28px;
-    display: block;
-    margin-bottom: 20px;
-    min-width: 400px;
-    width: max-content;
-    max-width: 500px;
-  }
+  text-shadow: 0 0 black;
+  font-size: 28px;
+  display: block;
+  margin-bottom: 20px;
+  min-width: 400px;
+  width: max-content;
+  max-width: 500px;
+}
 
-.text-danger{
-    font-size: 14px;
+.text-danger {
+  font-size: 14px;
+}
+  
+.post-content img{
+  max-width: 100%;
 }

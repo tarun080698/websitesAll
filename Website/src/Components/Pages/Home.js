@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import Header from "../CommonComp/Header";
-import Services from "../CommonComp/Services"
-import Portfolio from "../CommonComp/Portfolio"
-import Team from "../CommonComp/Team"
-import Contact from "../Pages/Contact"
+import Footer from "../CommonComp/Footer";
+import Services from "../CommonComp/Services";
+import Portfolio from "../CommonComp/Portfolio";
+import Team from "../CommonComp/Team";
+import Contact from "../Pages/Contact";
+import About from "../Pages/About";
+
+
+import image from '../../assets/img/header-bg.jpg'
 
 class Home extends Component {
   render() {
@@ -14,14 +19,30 @@ class Home extends Component {
           subtitle="IT'S NICE TO MEET YOU"
           btntxt="TELL ME MORE"
           link="/services"
-          showbtn={true} />
+          showbtn={true}
+          image={image}
+        />
         <Services />
         <Portfolio />
+        <About />
         <Team />
         <Contact />
+        <Footer />
       </div>
     );
   }
 }
+
+// const mapStateToProps = (state) => {
+//   return {
+//     auth: state.auth,
+//   };
+// };
+
+// const mapDispatchToProps = (dispatch) => ({
+//   logout: (token) => {
+//     dispatch(authActions.logout(token));
+//   },
+// });
 
 export default Home;

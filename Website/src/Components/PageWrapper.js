@@ -1,5 +1,8 @@
+import { Button } from "@material-ui/core";
 import React, { Component } from "react";
-import { Link } from "react-router-dom"
+import { connect } from "react-redux";
+import { withRouter, Link  } from "react-router-dom";
+import * as authActions from '../Components/store/actions/authActions';
 
 export class PageWrapper extends Component {
   render() {
@@ -34,7 +37,12 @@ export class PageWrapper extends Component {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link js-scroll-trigger" to="/portfolio">
-                    Locations
+                    Portfolio
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link js-scroll-trigger" to="/blog">
+                    Blogs
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -52,11 +60,27 @@ export class PageWrapper extends Component {
                     Contact
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link js-scroll-trigger" to="/admin">
-                    AdminPage
-                  </Link>
-                </li>
+                {this.props.auth.token ? (
+                  <><li className="nav-item">
+                    <Link className="nav-link js-scroll-trigger" to="/admin">
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                  <Button className="nav-link js-scroll-trigger" onclick={() => {
+                    console.log('clicked');
+                    this.props.logout(this.props.auth.token);
+                  }}>
+                    Logout
+                  </Button>
+                </li></>
+                ) : (
+                  <li className="nav-item">
+                    <Link className="nav-link js-scroll-trigger" to="/admin">
+                      Login
+                    </Link>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
@@ -67,4 +91,14 @@ export class PageWrapper extends Component {
   }
 }
 
-export default PageWrapper;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  logout: (token) => {
+    dispatch(authActions.logout(token));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PageWrapper));

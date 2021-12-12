@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Fields from "../CommonComp/Fields";
 import { withFormik } from "formik";
 // import * as Yup from "yup";
+import Header from "../CommonComp/Header";
+// import image from "../../assets/img/wallpaper.jpeg";
+import imageSample from "../../assets/img/sample.jpg";
 
 const fields = {
   sections: [
@@ -44,7 +47,13 @@ class contact extends Component {
   render() {
     return (
       <div>
-        <section className="page-section" id="contact">
+        <Header
+          title="Welcome To Our Blog's Page!"
+          subtitle="Read all of our stories"
+          showbtn={false}
+          image={imageSample}
+        />
+        <section className="page-section" id="contact" style={{backgroundColor: '#2A3C50'}}>
           <div className="container">
             <div className="text-center">
               <h2 className="section-heading text-uppercase">Contact Us</h2>

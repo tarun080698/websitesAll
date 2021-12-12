@@ -1,30 +1,43 @@
-import React from 'react'
-import { BackTop } from 'antd';
+import React, { Component } from "react";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import GitHubIcon from "@material-ui/icons/GitHub";
 
-function Footer() {
+export default class Footer extends Component {
+  render() {
     return (
-        <div className="container-fluid">
-      <div className="footer">
-        <div className="logo">
-          <a href="https://github.com">
-            <i className="fas fa-bolt"></i>
-            <b>Tech</b>
-          </a>
+      <div>
+        <footer class="footer py-4">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-4 text-lg-left">
+                Copyright © Speed UP 2020
               </div>
-              <ul className="socials">
-                  <li><a href="https://www.facebook.com/tarun.dadlani.5/"><i className="fab fa-facebook"></i></a></li>
-                  <li><a href="https://www.hackerrank.com/tarundadlani"><i className="fab fa-hackerrank"></i></a></li>
-                  <li><a href="https://www.linkedin.com/in/tarun-dadlani/"><i className="fab fa-linkedin"></i></a></li>
-                  <li><a href="https://github.com/tarun080698"><i className="fab fa-github"></i></a></li>
-                  <li><a href="https://www.instagram.com/tarun_dadlani/"><i className="fab fa-instagram"></i></a></li>
-              </ul>
-              <div className="copyright">Copyright &copy; 2020 Tech</div>
-        <BackTop>
-          <div className="goTop"><i className="fas fa-arrow-circle-up"></i></div>
-        </BackTop>
+              <div class="col-lg-4 my-3 my-lg-0">
+                <a target='_blank' rel="noreferrer" class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/tarun-dadlani/">
+                  <LinkedInIcon />
+                </a>
+                <a target='_blank' rel="noreferrer" class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/tarun.dadlani.5/">
+                  <FacebookIcon />
+                </a>
+                <a target='_blank' rel="noreferrer" class="btn btn-dark btn-social mx-2" href="https://github.com/tarun080698">
+                  <GitHubIcon />
+                </a>
+                <a target='_blank' rel="noreferrer"  class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/tarun_dadlani/">
+                  <InstagramIcon />
+                </a>
+              </div>
+              <div class="col-lg-4 text-lg-right">
+                <a class="mr-3" href="#!">
+                  Privacy Policy
+                </a>
+                <a href="#!">Terms of Use</a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
-      </div>
-    )
+    );
+  }
 }
-
-export default Footer

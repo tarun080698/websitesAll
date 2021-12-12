@@ -7,11 +7,7 @@ export default class LoginWrapper extends Component {
     render() {
         return (
             <div id='login-page'>
-                {/* <AppBar>
-                    <Toolbar />
-                </AppBar> */}
                 {this.props.children}
-
             </div>
         )
     }

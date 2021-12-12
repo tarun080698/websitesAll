@@ -1,9 +1,12 @@
 /* eslint-disable camelcase */
+// ,
+//     "maxFileSize":  "104857600",
+//     "nameConflict": "makeUnique"
 'use strict';
 const sharp = require('sharp');
 const fs = require('fs');
 
-const CONTAINER_URL = '/api/container/';
+const CONTAINER_URL = '/api/ImageFiles/';
 
 module.exports = function(PostImage) {
   PostImage.upload = function(
@@ -21,6 +24,14 @@ module.exports = function(PostImage) {
     if (!fs.existsSync('./server/storage/' + ctx.req.params.container)) {
       fs.mkdirSync('./server/storage/' + ctx.req.params.container);
     }
+
+    PostImage.find({where: {postId: post_id}}, (feer, files) => {
+      if (!feer && files) {
+        files.map(file => {
+          file.updateAttributes({ postId: null })
+        });
+      }
+    });
     PostImage.app.models.ImageFile.upload(
       ctx.req,
       ctx.result,
@@ -32,11 +43,11 @@ module.exports = function(PostImage) {
           sharp(
             './server/storage/' + ctx.req.params.container + '/' + fileInfo.name
           )
-            .resize(100)
+            .resize(100, 100)
             .toFile(
               './server/storage/' +
                 ctx.req.params.container +
-                '/100' +
+                '/100-' +
                 fileInfo.name,
               (err) => {
                 if (!err) {
@@ -79,7 +90,7 @@ module.exports = function(PostImage) {
       {arg: 'user_id', type: 'string'},
     ],
     returns: {
-      arg: 'fileObject',
+      arg: 'data',
       type: 'object',
       root: 'true',
     },

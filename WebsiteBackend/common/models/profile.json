@@ -6,11 +6,11 @@
     "validateUpsert": true
   },
   "properties": {
-    "firstname": {
+    "name": {
       "type": "string",
       "required": true
     },
-    "lastname": {
+    "email": {
       "type": "string",
       "required": true
     },
@@ -38,6 +38,11 @@
     "Post": {
       "type": "hasMany",
       "model": "Post",
+      "foreignKey": ""
+    },
+    "Comments": {
+      "type": "hasMany",
+      "model": "Comment",
       "foreignKey": ""
     }
   },
